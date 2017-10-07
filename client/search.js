@@ -6,4 +6,5 @@ let helper = algoliasearchHelper(client, 'Restaurants')
 
 helper.on('result', (content) => {console.log(content)})
 
-helper.search();
+module.exports.client = client;
+module.exports.helper = helper;
