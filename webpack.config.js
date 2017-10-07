@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './client/index.html',
   filename: 'index.html',
-  inject: 'body',
+  inject: 'body'
 })
 
 module.exports = {
@@ -13,6 +13,7 @@ module.exports = {
     path: path.resolve('dist'),
     filename: 'index_bundle.js'
   },
+  devtool: 'source-map',
   module: {
     loaders: [
         { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
