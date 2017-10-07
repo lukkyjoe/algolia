@@ -6,11 +6,10 @@ let log = () => {console.log('hiii')}
 export default class App extends React.Component {
   constructor(props){
     super(props);
-    this.foo = this.foo.bind(this);
+    this.search = this.search.bind(this);
   }
   
-  foo(){
-    console.log('siup')
+  search(){
     algolia.helper.on('result', (content) => {console.log(content)})
     algolia.helper.search()
   }
@@ -19,7 +18,7 @@ export default class App extends React.Component {
     return (
       <div style={{textAlign: 'center'}}>
         <h1>hi Algolia</h1>
-        <input onChange={this.foo}/>
+        <input onChange={this.search}/>
       </div>
     )
   }
