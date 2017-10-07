@@ -1,8 +1,6 @@
 import React from 'react';
 let algolia = require('../search');
 
-let log = () => {console.log('hiii')}
-
 export default class App extends React.Component {
   constructor(props){
     super(props);
