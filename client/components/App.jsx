@@ -18,7 +18,7 @@ export default class App extends React.Component {
       console.log('content', content);
       this.setState({results: content.hits})
     })
-    algolia.helper.search()
+    algolia.helper.setQuery(this.state.queryValue).search()
   }
 
   handleChange(event){
