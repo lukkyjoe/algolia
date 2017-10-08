@@ -5,10 +5,16 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
     this.search = this.search.bind(this);
+    this.state = {
+      results: []
+    }
   }
   
   search(){
-    algolia.helper.on('result', (content) => {console.log(content)})
+    algolia.helper.on('result', (content) => {
+      console.log('content', content);
+      this.setState({results: content.hits})
+    })
     algolia.helper.search()
   }
 
