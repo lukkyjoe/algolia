@@ -7,6 +7,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       queryValue: "",
+      facets: [],
       results: []
     }
     this.search = this.search.bind(this);
@@ -16,7 +17,10 @@ export default class App extends React.Component {
   search(){
     algolia.helper.on('result', (content) => {
       console.log('content', content);
-      this.setState({results: content.hits})
+      console.log(content.getFacetValues('food_type'))
+      this.setState({
+        results: content.hits,
+      })
     })
     algolia.helper.setQuery(this.state.queryValue).search()
   }
@@ -33,8 +37,14 @@ export default class App extends React.Component {
         <form>
           <input value={this.state.queryValue} onChange={this.handleChange}/>
         </form>
-        <Results rawResults={this.state.results}/>
+        <div style={{display: 'flex'}}>
+
+          <Results rawResults={this.state.results}/>
+        </div>
+
       </div>
     )
   }
 }
+
+// USE THE getFacetValues method
