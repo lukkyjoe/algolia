@@ -5,10 +5,12 @@ import Results from './Results.jsx'
 export default class App extends React.Component {
   constructor(props){
     super(props);
-    this.search = this.search.bind(this);
     this.state = {
+      queryValue: "",
       results: []
     }
+    this.search = this.search.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   
   search(){
@@ -19,11 +21,18 @@ export default class App extends React.Component {
     algolia.helper.search()
   }
 
+  handleChange(event){
+    this.setState({queryValue: event.target.value})
+    this.search();
+  }
+
   render() {
     return (
       <div style={{textAlign: 'center'}}>
         <h1>hi Algolia</h1>
-        <input onChange={this.search}/>
+        <form>
+          <input value={this.state.queryValue} onChange={this.handleChange}/>
+        </form>
         <Results rawResults={this.state.results}/>
       </div>
     )
