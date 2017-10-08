@@ -1,5 +1,6 @@
-import React from 'react';
-let algolia = require('../search');
+import React from 'react'
+let algolia = require('../search')
+import Results from './Results.jsx'
 
 export default class App extends React.Component {
   constructor(props){
@@ -23,6 +24,7 @@ export default class App extends React.Component {
       <div style={{textAlign: 'center'}}>
         <h1>hi Algolia</h1>
         <input onChange={this.search}/>
+        <Results rawResults={this.state.results}/>
       </div>
     )
   }
