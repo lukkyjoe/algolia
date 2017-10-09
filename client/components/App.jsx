@@ -3,6 +3,7 @@ let algolia = require('../search')
 import Results from './Results.jsx'
 import FoodTypes from './FoodTypes.jsx'
 import Ratings from './Ratings.jsx'
+import PaymentOptions from './PaymentOptions.jsx'
 
 export default class App extends React.Component {
   constructor(props){
@@ -11,11 +12,13 @@ export default class App extends React.Component {
       queryValue: "",
       results: [],
       food_types: [], 
-      stars_count: [0,1,2,3,4,5]
+      stars_count: [0,1,2,3,4,5],
+      payment_options: ['AMEX/American Express', 'Visa', 'Discover', 'Mastercard'],
     }
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSelectCuisine = this.handleSelectCuisine.bind(this);
+    this.handleSelectPaymentOption = this.handleSelectPaymentOption.bind(this);
   }
   
   componentWillMount(){
@@ -27,7 +30,7 @@ export default class App extends React.Component {
       console.log('content', content);
       this.setState({
         results: content.hits,
-        food_types: content.getFacetValues('food_type') 
+        food_types: content.getFacetValues('food_type'),
       })
     })
     algolia.helper.setQuery(this.state.queryValue).search()
@@ -49,6 +52,10 @@ export default class App extends React.Component {
       .search(); // check if .search() is necessary
   }
 
+  handleSelectPaymentOption(type){
+
+  }
+
   render() {
     return (
       <div style={{textAlign: 'center'}}>
@@ -60,6 +67,7 @@ export default class App extends React.Component {
           <div>
             <FoodTypes food_types={this.state.food_types} select={this.handleSelectCuisine}/>
             <Ratings stars_count={this.state.stars_count} select={this.handleSelectRating}/>
+            <PaymentOptions options={this.state.payment_options} />
           </div>
           <Results rawResults={this.state.results}/>
         </div>

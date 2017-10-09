@@ -10,6 +10,7 @@ Algolia project
 #TODOs
 1. Search for restaurants by name, cuisine, location
 2. Format stars_count to number type
+3. Payment options are nested inside an array
 
 #Assumptions (to be verified)
 1. Cuisine is toggle
