@@ -3,7 +3,6 @@ import React from 'react';
 const PaymentOptions = (props) => {
   const options = Object.entries(props.options);
   let list = options.map((item, index) => {
-      console.log('item', item)
       return (
         <div key={index} style={{display: 'flex'}}>
           <div> {item[0]}</div>

@@ -13,7 +13,6 @@ export default class App extends React.Component {
       results: [],
       food_types: [], 
       stars_count: [0,1,2,3,4,5],
-      payment_options: ['AMEX/American Express', 'Visa', 'Discover', 'Mastercard'],
       UI_selectedPayments: {'AMEX': true, 'Visa': true, 'Discover': true, 'Mastercard': true}
     }
     this.search = this.search.bind(this);
@@ -57,9 +56,26 @@ export default class App extends React.Component {
     let selected = Object.assign({}, this.state.UI_selectedPayments);
     selected[type] = !selected[type];
     this.setState({UI_selectedPayments: selected})
-    // this.setState({UI_selectedPayments[type]: !UI_selectedPayments[type]})
-    // algolia.helper.addDisjunctiveFacetRefinement('payment_options', type)
-    //   .search();
+    // generate an array of the payment methods that are true from 'selected'
+    let disjunctiveRefinementArray = []
+    for (let key in selected){
+      // translate to Diners Club and Carte Blanche
+      if (selected[key] && key === 'AMEX'){
+        disjunctiveRefinementArray.push('AMEX');
+      }
+      if (selected[key] && key === 'Visa'){
+        disjunctiveRefinementArray.push('Visa');
+      }
+      if (selected[key] && key === 'Mastercard'){
+        disjunctiveRefinementArray.push('MasterCard');
+      }
+      if (selected[key] && key === 'Discover'){
+        disjunctiveRefinementArray.push('Diners Club', 'Carte Blanche');
+      }
+    }
+    algolia.helper.removeDisjunctiveFacetRefinement('payment_options') //clear existing
+      .addDisjunctiveFacetRefinement('payment_options', ...disjunctiveRefinementArray)
+      .search();
   }
 
   render() {
