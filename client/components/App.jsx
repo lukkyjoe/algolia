@@ -15,6 +15,10 @@ export default class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
   
+  componentWillMount(){
+    this.search()
+  }
+
   search(){
     algolia.helper.on('result', (content) => {
       console.log('content', content);
@@ -29,6 +33,10 @@ export default class App extends React.Component {
   handleChange(event){
     this.setState({queryValue: event.target.value})
     this.search();
+  }
+
+  handleSelectCuisine(){
+
   }
 
   render() {
