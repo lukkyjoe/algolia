@@ -9,6 +9,7 @@ Algolia project
 
 #TODOs
 1. Search for restaurants by name, cuisine, location
+2. Format stars_count to number type
 
 #Assumptions (to be verified)
 1. Cuisine is toggle

@@ -9,6 +9,8 @@ let result = []
 csv({delimiter: ';'})
 .fromFile(csvFilePath)
 .on('json',(jsonObj)=>{
+  jsonObj.stars_count = Number(jsonObj.stars_count); // change stars and review counts back to number type (csvtojson module type coerced original data to string)
+  jsonObj.reviews_count = Number(jsonObj.reviews_count); 
   result.push(jsonObj);
 })
 .on('done',(error)=>{

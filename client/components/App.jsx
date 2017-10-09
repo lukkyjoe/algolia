@@ -44,8 +44,9 @@ export default class App extends React.Component {
   }
 
   handleSelectRating(rating){
-    algolia.helper.addNumericRefinement('stars_count', '>', rating)
-      .search(); // check if necessary
+    algolia.helper.clearRefinements('stars_count')
+      .addNumericRefinement('stars_count', '>', rating)
+      .search(); // check if .search() is necessary
   }
 
   render() {
