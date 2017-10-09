@@ -12,8 +12,6 @@ csv({delimiter: ';'})
   result.push(jsonObj);
 })
 .on('done',(error)=>{
-  console.log('end');
-  console.log('before merge', result);
   let mergedArray = [];
   for (let i = 0; i < result.length; i++){
     let mergedObj = {};
@@ -24,7 +22,6 @@ csv({delimiter: ';'})
       }
     }
   }
-  console.log('after merge', mergedArray);
   jsonfile.writeFile(outputFile, mergedArray, (error) => {console.error(error)})
 })
 
