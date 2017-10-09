@@ -6,3 +6,6 @@ Algolia project
 2. Clarify that it's ok to add facet via dashboard (not programatically)
 3. Clarify filter/facet UI/UX requirements
 4. Clarify pagination requirement for showing food_type facet
+
+#TODOs
+1. Search for restaurants by name, cuisine, location

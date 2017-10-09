@@ -37,7 +37,7 @@ export default class App extends React.Component {
   }
 
   handleSelectCuisine(facetValue){
-    algolia.helper.toggleFacetRefinement('food_type', 'American')
+    algolia.helper.toggleFacetRefinement('food_type', facetValue)
       .search();
   }
 
@@ -49,7 +49,7 @@ export default class App extends React.Component {
           <input value={this.state.queryValue} onChange={this.handleChange}/>
         </form>
         <div style={{display: 'flex'}}>
-          <FoodTypes food_types={this.state.food_types} foo={this.handleSelectCuisine}/>
+          <FoodTypes food_types={this.state.food_types} select={this.handleSelectCuisine}/>
           <Results rawResults={this.state.results}/>
         </div>
 
