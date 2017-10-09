@@ -1,14 +1,15 @@
 import React from 'react';
 
 const PaymentOptions = (props) => {
-  const options = props.options;
+  const options = Object.entries(props.options);
   let list = options.map((item, index) => {
+      console.log('item', item)
       return (
-        <div key={index} onClick={() => {props.select(item)
-            console.log('selected', item)
-            }}>
-          <div> {item}</div>
-          <input type="checkbox"/>
+        <div key={index} style={{display: 'flex'}}>
+          <div> {item[0]}</div>
+          <input type="checkbox" checked={item[1]} onChange={() => {
+            props.select(item[0])
+            }}/>
         </div>
       )
     })

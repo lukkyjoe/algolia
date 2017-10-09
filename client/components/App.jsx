@@ -14,6 +14,7 @@ export default class App extends React.Component {
       food_types: [], 
       stars_count: [0,1,2,3,4,5],
       payment_options: ['AMEX/American Express', 'Visa', 'Discover', 'Mastercard'],
+      UI_selectedPayments: {'AMEX': true, 'Visa': true, 'Discover': true, 'Mastercard': true}
     }
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -49,12 +50,16 @@ export default class App extends React.Component {
   handleSelectRating(rating){
     algolia.helper.clearRefinements('stars_count')
       .addNumericRefinement('stars_count', '>=', rating)
-      .search(); // check if .search() is necessary
+      .search(); 
   }
 
   handleSelectPaymentOption(type){
-    algolia.helper.addDisjunctiveFacetRefinement('payment_options', type)
-      .search();
+    let selected = Object.assign({}, this.state.UI_selectedPayments);
+    selected[type] = !selected[type];
+    this.setState({UI_selectedPayments: selected})
+    // this.setState({UI_selectedPayments[type]: !UI_selectedPayments[type]})
+    // algolia.helper.addDisjunctiveFacetRefinement('payment_options', type)
+    //   .search();
   }
 
   render() {
@@ -68,14 +73,11 @@ export default class App extends React.Component {
           <div>
             <FoodTypes food_types={this.state.food_types} select={this.handleSelectCuisine}/>
             <Ratings stars_count={this.state.stars_count} select={this.handleSelectRating}/>
-            <PaymentOptions options={this.state.payment_options} select={this.handleSelectPaymentOption} />
+            <PaymentOptions options={this.state.UI_selectedPayments} select={this.handleSelectPaymentOption}/>
           </div>
           <Results rawResults={this.state.results}/>
         </div>
-
       </div>
     )
   }
 }
-
-// USE THE getFacetValues method
