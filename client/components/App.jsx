@@ -2,6 +2,7 @@ import React from 'react'
 let algolia = require('../search')
 import Results from './Results.jsx'
 import FoodTypes from './FoodTypes.jsx'
+import Ratings from './Ratings.jsx'
 
 export default class App extends React.Component {
   constructor(props){
@@ -9,7 +10,8 @@ export default class App extends React.Component {
     this.state = {
       queryValue: "",
       results: [],
-      food_types: []
+      food_types: [], 
+      ratings: [0,1,2,3,4,5]
     }
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -51,6 +53,7 @@ export default class App extends React.Component {
         <div style={{display: 'flex'}}>
           <div>
             <FoodTypes food_types={this.state.food_types} select={this.handleSelectCuisine}/>
+            <Ratings ratings={this.state.ratings}/>
           </div>
           <Results rawResults={this.state.results}/>
         </div>

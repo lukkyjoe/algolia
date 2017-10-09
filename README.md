@@ -9,3 +9,9 @@ Algolia project
 
 #TODOs
 1. Search for restaurants by name, cuisine, location
+
+#Assumptions (to be verified)
+1. Cuisine is toggle
+2. Rating is filter
+3. Payment options is multiple choice
+4. Can you select ratings and also cuisine type?
