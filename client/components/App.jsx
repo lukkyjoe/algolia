@@ -49,7 +49,9 @@ export default class App extends React.Component {
           <input value={this.state.queryValue} onChange={this.handleChange}/>
         </form>
         <div style={{display: 'flex'}}>
-          <FoodTypes food_types={this.state.food_types} select={this.handleSelectCuisine}/>
+          <div>
+            <FoodTypes food_types={this.state.food_types} select={this.handleSelectCuisine}/>
+          </div>
           <Results rawResults={this.state.results}/>
         </div>
 
