@@ -53,7 +53,8 @@ export default class App extends React.Component {
   }
 
   handleSelectPaymentOption(type){
-
+    algolia.helper.addDisjunctiveFacetRefinement('payment_options', type)
+      .search();
   }
 
   render() {
@@ -67,7 +68,7 @@ export default class App extends React.Component {
           <div>
             <FoodTypes food_types={this.state.food_types} select={this.handleSelectCuisine}/>
             <Ratings stars_count={this.state.stars_count} select={this.handleSelectRating}/>
-            <PaymentOptions options={this.state.payment_options} />
+            <PaymentOptions options={this.state.payment_options} select={this.handleSelectPaymentOption} />
           </div>
           <Results rawResults={this.state.results}/>
         </div>
