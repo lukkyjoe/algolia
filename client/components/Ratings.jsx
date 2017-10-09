@@ -1,8 +1,10 @@
 import React from 'react';
 
 const Ratings = (props) => {
-  const ratings = props.ratings;
-  let list = ratings.map((item, index) => <div key={index} onClick={() => {console.log('clicked', item)}}> {item}</div>)
+  const stars = props.stars_count;
+  let list = stars.map((item, index) => <div key={index} onClick={() => {props.select(item)
+    console.log('bar')
+    }}> {item}</div>)
   return <div>{list}</div>
 }
 

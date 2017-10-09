@@ -11,7 +11,7 @@ export default class App extends React.Component {
       queryValue: "",
       results: [],
       food_types: [], 
-      ratings: [0,1,2,3,4,5]
+      stars_count: [0,1,2,3,4,5]
     }
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -43,6 +43,11 @@ export default class App extends React.Component {
       .search();
   }
 
+  handleSelectRating(rating){
+    algolia.helper.addNumericRefinement('stars_count', '>', rating)
+      .search(); // check if necessary
+  }
+
   render() {
     return (
       <div style={{textAlign: 'center'}}>
@@ -53,7 +58,7 @@ export default class App extends React.Component {
         <div style={{display: 'flex'}}>
           <div>
             <FoodTypes food_types={this.state.food_types} select={this.handleSelectCuisine}/>
-            <Ratings ratings={this.state.ratings}/>
+            <Ratings stars_count={this.state.stars_count} select={this.handleSelectRating}/>
           </div>
           <Results rawResults={this.state.results}/>
         </div>
