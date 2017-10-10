@@ -8,6 +8,7 @@ Algolia project
 • Customer questions
 • Consider refactoring to using only client where helper is not necessary
 • Display x results found in y seconds
+• Background???
 
 #Assumptions (to be verified)
 1. For the left side bar options: I'm assuming that it's possible to select a cuisine type AND a rating. (e.g. 'Japanese' AND 4 stars)
