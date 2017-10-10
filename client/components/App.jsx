@@ -20,6 +20,7 @@ export default class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSelectCuisine = this.handleSelectCuisine.bind(this);
     this.handleSelectPaymentOption = this.handleSelectPaymentOption.bind(this);
+    this.handleNextPage = this.handleNextPage.bind(this);
   }
   
   componentWillMount(){
@@ -90,6 +91,12 @@ export default class App extends React.Component {
       .search();
   }
 
+  handleNextPage(){
+    console.log('nextPage!')
+    let currentPage = algolia.helper.getCurrentPage();
+    algolia.helper.setQueryParameter('page', currentPage + 1).search()
+  }
+
   render() {
     return (
       <div style={{textAlign: 'center'}}>
@@ -104,6 +111,7 @@ export default class App extends React.Component {
             <PaymentOptions options={this.state.UI_selectedPayments} select={this.handleSelectPaymentOption}/>
           </div>
           <Results rawResults={this.state.results}/>
+          <button onClick={this.handleNextPage}>next page</button>
         </div>
       </div>
     )

@@ -4,8 +4,7 @@ Algolia project
 #TODOs
 • Geo location to show higher in results: https://www.algolia.com/doc/guides/searching/geo-search/#attributes-returned-within-the-results
 • Fallback if blocked
-• Format stars_count to number type
-• Show more
+• Pagination / Show more: https://community.algolia.com/algoliasearch-helper-js/reference.html#pagination
 • Customer questions
 • Consider refactoring to using only client where helper is not necessary
 
