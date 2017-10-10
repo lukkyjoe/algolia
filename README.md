@@ -3,10 +3,11 @@ Algolia project
 
 #TODOs
 • Geo location to show higher in results: https://www.algolia.com/doc/guides/searching/geo-search/#attributes-returned-within-the-results
-• Fallback if blocked
+• Fallback if blocked (fall back can be to use IP)
 • Pagination / Show more: https://community.algolia.com/algoliasearch-helper-js/reference.html#pagination
 • Customer questions
 • Consider refactoring to using only client where helper is not necessary
+• Display x results found in y seconds
 
 #Assumptions (to be verified)
 1. For the left side bar options: I'm assuming that it's possible to select a cuisine type AND a rating. (e.g. 'Japanese' AND 4 stars)

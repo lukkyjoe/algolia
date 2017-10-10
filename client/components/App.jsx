@@ -111,8 +111,10 @@ export default class App extends React.Component {
             <Ratings stars_count={this.state.stars_count} select={this.handleSelectRating}/>
             <PaymentOptions options={this.state.UI_selectedPayments} select={this.handleSelectPaymentOption}/>
           </div>
-          <Results rawResults={this.state.results}/>
-          <button onClick={this.handleNextPage}>next page</button>
+          <div>
+            <Results rawResults={this.state.results}/>
+            <button onClick={this.handleNextPage}>next page</button>            
+          </div>
         </div>
       </div>
     )
