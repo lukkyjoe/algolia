@@ -99,11 +99,12 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div style={{textAlign: 'center'}}>
-        <h1>hi Algolia</h1>
-        <form>
-          <input value={this.state.queryValue} onChange={this.handleChange}/>
-        </form>
+      <div>
+        <div style={{display: 'flex', backgroundColor: '#1C688E', justifyContent: 'space-around'}}>
+          <form>
+            <input value={this.state.queryValue} onChange={this.handleChange} placeholder={'Search for Restaurants by Name, Cuisine, Location'}/>
+          </form>
+        </div>
         <div style={{display: 'flex'}}>
           <div>
             <FoodTypes food_types={this.state.food_types} select={this.handleSelectCuisine}/>
