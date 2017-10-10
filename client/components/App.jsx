@@ -15,6 +15,7 @@ export default class App extends React.Component {
       stars_count: [0,1,2,3,4,5],
       UI_selectedPayments: {'AMEX': true, 'Visa': true, 'Discover': true, 'Mastercard': true}
     }
+    this.getLocation = this.getLocation.bind(this);
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSelectCuisine = this.handleSelectCuisine.bind(this);
@@ -22,7 +23,14 @@ export default class App extends React.Component {
   }
   
   componentWillMount(){
+    this.getLocation();
     this.search()
+  }
+
+  getLocation(){
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {console.log(position)});
+    }
   }
 
   search(){
