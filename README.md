@@ -7,6 +7,7 @@ Algolia project
 • Format stars_count to number type
 • Show more
 • Customer questions
+• Consider refactoring to using only client where helper is not necessary
 
 #Assumptions (to be verified)
 1. For the left side bar options: I'm assuming that it's possible to select a cuisine type AND a rating. (e.g. 'Japanese' AND 4 stars)

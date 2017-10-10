@@ -28,12 +28,15 @@ export default class App extends React.Component {
   }
 
   getLocation(){
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {console.log(position)});
-    }
+    // if (navigator.geolocation) {
+    //   navigator.geolocation.getCurrentPosition((position) => {console.log(position)});
+    // }
+    // algolia.index.search({query: 'seafood', aroundLatLngViaIP: true})
+    //   .then((res) => {console.log('res', res)})
   }
 
   search(){
+    console.log(algolia.helper)
     algolia.helper.on('result', (content) => {
       console.log('content', content);
       this.setState({
@@ -41,7 +44,7 @@ export default class App extends React.Component {
         food_types: content.getFacetValues('food_type'),
       })
     })
-    algolia.helper.setQuery(this.state.queryValue).search()
+    algolia.helper.setQueryParameter('aroundLatLngViaIP', true).setQuery(this.state.queryValue).search()
   }
 
   handleChange(event){
@@ -50,6 +53,7 @@ export default class App extends React.Component {
   }
 
   handleSelectCuisine(facetValue){
+    console.log('cuisine helper', algolia.helper)
     algolia.helper.toggleFacetRefinement('food_type', facetValue)
       .search();
   }
