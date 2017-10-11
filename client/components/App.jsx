@@ -13,7 +13,9 @@ export default class App extends React.Component {
       results: [],
       food_types: [], 
       stars_count: [0,1,2,3,4,5],
-      UI_selectedPayments: {'AMEX': true, 'Visa': true, 'Discover': true, 'Mastercard': true}
+      UI_selectedPayments: {'AMEX': true, 'Visa': true, 'Discover': true, 'Mastercard': true},
+      nbHits: 0,
+      processingTimeMS: 0,
     }
     this.getLocation = this.getLocation.bind(this);
     this.search = this.search.bind(this);
@@ -38,7 +40,6 @@ export default class App extends React.Component {
   }
 
   search(){
-    console.log(algolia.helper)
     algolia.helper.on('result', (content) => {
       console.log('content', content);
       this.setState({
@@ -117,6 +118,7 @@ export default class App extends React.Component {
             <PaymentOptions options={this.state.UI_selectedPayments} select={this.handleSelectPaymentOption}/>
           </div>
           <div>
+
             <Results rawResults={this.state.results}/>
             <button onClick={this.handleNextPage}>next page</button>            
           </div>
