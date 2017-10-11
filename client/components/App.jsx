@@ -18,6 +18,7 @@ export default class App extends React.Component {
     this.getLocation = this.getLocation.bind(this);
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSelectCuisine = this.handleSelectCuisine.bind(this);
     this.handleSelectPaymentOption = this.handleSelectPaymentOption.bind(this);
     this.handleNextPage = this.handleNextPage.bind(this);
@@ -51,6 +52,10 @@ export default class App extends React.Component {
   handleChange(event){
     this.setState({queryValue: event.target.value})
     this.search();
+  }
+
+  handleSubmit(event){
+    event.preventDefault()
   }
 
   handleSelectCuisine(facetValue){
@@ -101,7 +106,7 @@ export default class App extends React.Component {
     return (
       <div style={{fontFamily: 'Helvetica'}}>
         <div style={{display: 'flex', padding: '20px', backgroundColor: '#1C688E', justifyContent: 'space-around'}}>
-          <form style={{width: '100%'}}>
+          <form onSubmit={this.handleSubmit} style={{width: '100%'}}>
             <input style={{height: '35px', width: '100%'}} value={this.state.queryValue} onChange={this.handleChange} placeholder={'Search for Restaurants by Name, Cuisine, Location'}/>
           </form>
         </div>

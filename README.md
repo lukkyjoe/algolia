@@ -14,6 +14,7 @@ Algolia project
 • Food types needs active state
 • Disjunctive payment filter can start with the 'non options' that will be a base search?
 • Hover will not show on touch. That's OK, right?
+• Prevent default upon enter of search bar
 
 #Assumptions (to be verified)
 1. For the left side bar options: I'm assuming that it's possible to select a cuisine type AND a rating. (e.g. 'Japanese' AND 4 stars)
