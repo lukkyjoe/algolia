@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/lukkyjoe/algolia/issues"
   },
-  "homepage": "https://github.com/lukkyjoe/algolia#readme",
+  "homepage": "https://lukkyjoe.github.io/algolia/",
   "dependencies": {
     "algoliasearch": "^3.24.5",
     "algoliasearch-helper": "^2.21.2",
