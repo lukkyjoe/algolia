@@ -4,6 +4,7 @@ Algolia project
 #TODOs
 • Geo location to show higher in results: https://www.algolia.com/doc/guides/searching/geo-search/#attributes-returned-within-the-results
 • Fallback if blocked (fall back can be to use IP)
+• Highlight filter
 • Pagination / Show more: https://community.algolia.com/algoliasearch-helper-js/reference.html#pagination
 • Customer questions
 • Consider refactoring to using only client where helper is not necessary
@@ -11,6 +12,8 @@ Algolia project
 • Background???
 • Food types needs count
 • Food types needs hover active
+• Disjunctive payment filter can start with the 'non options' that will be a base search?
+• Hover will not show on touch. That's OK, right?
 
 #Assumptions (to be verified)
 1. For the left side bar options: I'm assuming that it's possible to select a cuisine type AND a rating. (e.g. 'Japanese' AND 4 stars)
