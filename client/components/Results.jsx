@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Results.css';
 
 const Results = (props) => {
   const rawResults = props.rawResults;
@@ -31,7 +32,7 @@ const SingleResult = (props) => {
     <div style={{display: 'flex'}}>
       <div><img src={props.item.image_url} style={{width: '80px', height: '80px'}}></img></div> 
       <div style={{margin: '10px'}}>
-        <div>{props.item.name}</div>
+        <div className={styles.restaurantName}>{props.item.name}</div>
         <div style={{display: 'flex'}}>
           <span>{props.item.stars_count}</span>
           {renderStarsScore()}
