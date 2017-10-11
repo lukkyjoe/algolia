@@ -30685,13 +30685,13 @@ var App = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { style: { fontFamily: 'Helvetica' } },
         _react2.default.createElement(
           'div',
-          { style: { display: 'flex', padding: '10px', backgroundColor: '#1C688E', justifyContent: 'space-around' } },
+          { style: { display: 'flex', padding: '20px', backgroundColor: '#1C688E', justifyContent: 'space-around' } },
           _react2.default.createElement(
             'form',
-            { style: { width: '90%' } },
+            { style: { width: '100%' } },
             _react2.default.createElement('input', { style: { height: '35px', width: '100%' }, value: this.state.queryValue, onChange: this.handleChange, placeholder: 'Search for Restaurants by Name, Cuisine, Location' })
           )
         ),
@@ -30761,7 +30761,7 @@ var SingleResult = function SingleResult(props) {
     _react2.default.createElement(
       'div',
       null,
-      _react2.default.createElement('img', { src: props.item.image_url })
+      _react2.default.createElement('img', { src: props.item.image_url, style: { width: '80px', height: '80px' } })
     ),
     _react2.default.createElement(
       'div',
@@ -30830,7 +30830,9 @@ var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(191);
+var _FoodTypes = __webpack_require__(191);
+
+var _FoodTypes2 = _interopRequireDefault(_FoodTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30839,7 +30841,7 @@ var FoodTypes = function FoodTypes(props) {
   var list = foodTypes.map(function (item, index) {
     return _react2.default.createElement(
       'div',
-      { className: 'food', key: index, onClick: function onClick() {
+      { className: _FoodTypes2.default.foodFilter, key: index, onClick: function onClick() {
           props.select(item.name);
         } },
       ' ',
@@ -30900,11 +30902,11 @@ exports = module.exports = __webpack_require__(193)(undefined);
 
 
 // module
-exports.push([module.i, ".FoodTypes__food___3-y5j {\n  color: red;\n}", ""]);
+exports.push([module.i, ".FoodTypes__foodFilter___2ZJPJ:hover {\n  background-color: #2897C5;\n  color: white;\n}\n\n", ""]);
 
 // exports
 exports.locals = {
-	"food": "FoodTypes__food___3-y5j"
+	"foodFilter": "FoodTypes__foodFilter___2ZJPJ"
 };
 
 /***/ }),
@@ -31484,7 +31486,7 @@ var Ratings = function Ratings(props) {
     _react2.default.createElement(
       'h3',
       null,
-      'Ratings'
+      'Rating'
     ),
     list
   );
