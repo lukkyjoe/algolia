@@ -30709,17 +30709,17 @@ var App = function (_React$Component) {
           { style: { display: 'flex' } },
           _react2.default.createElement(
             'div',
-            null,
+            { style: { width: '25%' } },
             _react2.default.createElement(_FoodTypes2.default, { food_types: this.state.food_types, select: this.handleSelectCuisine }),
             _react2.default.createElement(_Ratings2.default, { stars_count: this.state.stars_count, select: this.handleSelectRating }),
             _react2.default.createElement(_PaymentOptions2.default, { options: this.state.UI_selectedPayments, select: this.handleSelectPaymentOption })
           ),
           _react2.default.createElement(
             'div',
-            null,
+            { style: { width: '75%' } },
             _react2.default.createElement(
               'div',
-              null,
+              { style: { margin: "20px" } },
               this.state.content.nbHits + ' results found in ' + this.state.content.processingTimeMS / 1000 + ' seconds'
             ),
             _react2.default.createElement(_Results2.default, { rawResults: this.state.hits }),
@@ -30799,9 +30799,9 @@ var SingleResult = function SingleResult(props) {
     ),
     _react2.default.createElement(
       'div',
-      null,
+      { style: { margin: '10px' } },
       _react2.default.createElement(
-        'h1',
+        'div',
         null,
         props.item.name
       ),
@@ -30813,14 +30813,14 @@ var SingleResult = function SingleResult(props) {
           null,
           props.item.stars_count
         ),
+        renderStarsScore(),
         _react2.default.createElement(
           'span',
           null,
           '(',
           props.item.reviews_count,
           ')'
-        ),
-        renderStarsScore()
+        )
       ),
       _react2.default.createElement(
         'div',
@@ -30840,8 +30840,7 @@ var SingleResult = function SingleResult(props) {
         _react2.default.createElement(
           'span',
           null,
-          props.item.price_range,
-          ' |'
+          props.item.price_range
         )
       )
     )

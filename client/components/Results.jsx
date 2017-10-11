@@ -30,7 +30,7 @@ const SingleResult = (props) => {
   return(
     <div style={{display: 'flex'}}>
       <div><img src={props.item.image_url} style={{width: '80px', height: '80px'}}></img></div> 
-      <div>
+      <div style={{margin: '10px'}}>
         <div>{props.item.name}</div>
         <div style={{display: 'flex'}}>
           <span>{props.item.stars_count}</span>
