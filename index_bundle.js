@@ -31167,7 +31167,7 @@ var App = function (_React$Component) {
           { className: _App2.default.layout, style: { display: 'flex' } },
           _react2.default.createElement(
             'div',
-            { style: { width: '25%', border: '10px', borderColor: 'black' } },
+            { className: _App2.default.sidebar },
             _react2.default.createElement(_FoodTypes2.default, { food_types: this.state.food_types, select: this.handleSelectCuisine }),
             _react2.default.createElement(_Ratings2.default, { stars_count: this.state.stars_count, select: this.handleSelectRating }),
             _react2.default.createElement(_PaymentOptions2.default, { options: this.state.UI_selectedPayments, select: this.handleSelectPaymentOption })
@@ -31650,11 +31650,12 @@ exports = module.exports = __webpack_require__(103)(undefined);
 
 
 // module
-exports.push([module.i, "@media screen and (max-width: 650px) {\n   .App__layout___1ELPa { flex-direction: column; } \n\n  }\n\n", ""]);
+exports.push([module.i, "@media screen and (max-width: 650px) {\n  .App__layout___1ELPa { flex-direction: column; } \n  .App__sidebar___FHQh1 { width: 100% }\n}\n\n@media screen and (min-width: 650px) {\n  .App__sidebar___FHQh1 {\n    width: 25%;\n  }\n}", ""]);
 
 // exports
 exports.locals = {
-	"layout": "App__layout___1ELPa"
+	"layout": "App__layout___1ELPa",
+	"sidebar": "App__sidebar___FHQh1"
 };
 
 /***/ }),
