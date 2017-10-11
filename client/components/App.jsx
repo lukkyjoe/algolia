@@ -1,10 +1,10 @@
 import React from 'react'
-let algolia = require('../search')
 import Results from './Results.jsx'
 import FoodTypes from './FoodTypes.jsx'
 import Ratings from './Ratings.jsx'
 import PaymentOptions from './PaymentOptions.jsx'
 import styles from './App.css'
+let algolia = require('../search')
 
 export default class App extends React.Component {
   constructor(props){
