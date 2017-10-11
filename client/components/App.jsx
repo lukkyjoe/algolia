@@ -19,7 +19,6 @@ export default class App extends React.Component {
       nbHits: 0,
       processingTimeMS: 0,
     }
-    this.getLocation = this.getLocation.bind(this);
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,28 +28,25 @@ export default class App extends React.Component {
   }
   
   componentWillMount(){
-    this.getLocation();
     this.search()
-  }
-
-  getLocation(){
-    // if (navigator.geolocation) {
-    //   navigator.geolocation.getCurrentPosition((position) => {console.log(position)});
-    // }
-    // algolia.index.search({query: 'seafood', aroundLatLngViaIP: true})
-    //   .then((res) => {console.log('res', res)})
   }
 
   search(){
     algolia.helper.on('result', (content) => {
-      console.log('content', content);
       this.setState({
         content: content,
         hits: content.hits,
         food_types: content.getFacetValues('food_type'),
       })
     })
-    algolia.helper.setQueryParameter('aroundLatLngViaIP', true).setQuery(this.state.queryValue).search()
+    algolia.helper.setQueryParameter('aroundLatLngViaIP', true).setQuery(this.state.queryValue).search(); //use fallback first because it's faster. 
+    navigator.geolocation.getCurrentPosition((position) => {
+        let lat = position.coords.latitude;
+        let lng = position.coords.longitude;
+        let positionString = `${lat}, ${lng}`;
+        console.log(positionString)
+        algolia.helper.setQueryParameter('aroundLatLng', positionString).setQuery(this.state.queryValue).search()
+    });
   }
 
   handleChange(event){
@@ -63,7 +59,6 @@ export default class App extends React.Component {
   }
 
   handleSelectCuisine(facetValue){
-    console.log('cuisine helper', algolia.helper)
     algolia.helper.toggleFacetRefinement('food_type', facetValue)
       .search();
   }
