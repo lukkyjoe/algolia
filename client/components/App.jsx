@@ -120,7 +120,7 @@ export default class App extends React.Component {
             <PaymentOptions options={this.state.UI_selectedPayments} select={this.handleSelectPaymentOption}/>
           </div>
           <div>
-            <div>{`${this.state.content.nbHits} results found in ${this.state.content.processingTimeMS / 1000} seconds`}</div>
+            <div style={{margin: "20px"}}>{`${this.state.content.nbHits} results found in ${this.state.content.processingTimeMS / 1000} seconds`}</div>
             <Results rawResults={this.state.hits}/>
             <button onClick={this.handleNextPage}>next page</button>            
           </div>
