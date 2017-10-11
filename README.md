@@ -13,6 +13,9 @@ Algolia project
 • Disjunctive payment filter can start with the 'non options' that will be a base search?
 • Hover will not show on touch.
 • Prevent default upon enter of search bar
+• top horizontal line
+• move score to horizontally align
+• move show more
 
 #Assumptions (verified)
 1. For the left side bar options: I'm assuming that it's possible to select a cuisine type AND a rating. (e.g. 'Japanese' AND 4 stars)
@@ -26,3 +29,4 @@ Algolia project
 # Clarification questions
 1. Clarify that it's ok to load processed JSON via dashboard manually (not programtically)
 2. Clarify that it's ok to add facet via dashboard (not programatically)
+

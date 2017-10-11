@@ -44,7 +44,6 @@ export default class App extends React.Component {
         let lat = position.coords.latitude;
         let lng = position.coords.longitude;
         let positionString = `${lat}, ${lng}`;
-        console.log(positionString)
         algolia.helper.setQueryParameter('aroundLatLng', positionString).setQuery(this.state.queryValue).search()
     });
   }
@@ -96,7 +95,6 @@ export default class App extends React.Component {
   }
 
   handleNextPage(){
-    console.log('nextPage!')
     let currentPage = algolia.helper.getCurrentPage();
     algolia.helper.setQueryParameter('page', currentPage + 1).search()
   }
@@ -117,11 +115,16 @@ export default class App extends React.Component {
           </div>
           <div className={styles.verticalLine}></div>
           <div className={styles.resultsSection}>
-            <div style={{margin: "20px"}}>{`${this.state.content.nbHits} results found in ${this.state.content.processingTimeMS / 1000} seconds`}</div>
+            <div className={styles.resultsSummary}>
+              <div className={styles.resultsFound}>{`${this.state.content.nbHits} results found `}</div>
+              <div>{`in ${this.state.content.processingTimeMS / 1000} seconds`}</div>
+              <div style={{width: '70%', marginLeft: '10px', display: 'flex', alignItems: 'flex-end'}}><div className={styles.topHorizontalLine}></div></div>
+            </div>
             <Results rawResults={this.state.hits}/>
-            <div><button className={styles.showMore} onClick={this.handleNextPage}>Show more</button></div>          
+            <div className={styles.showMore}><button style={{width: '184px', height: '37px'}} onClick={this.handleNextPage}>Show more</button></div>          
           </div>
         </div>
+        <div className={styles.horizontalLine}></div>
       </div>
     )
   }

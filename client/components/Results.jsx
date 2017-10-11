@@ -31,18 +31,18 @@ const SingleResult = (props) => {
   return(
     <div style={{display: 'flex'}}>
       <div><img src={props.item.image_url} style={{width: '80px', height: '80px'}}></img></div> 
-      <div style={{margin: '10px'}}>
+      <div style={{display: 'flex', flexDirection: 'column', margin: '10px'}}>
         <div className={styles.restaurantName}>{props.item.name}</div>
         <div style={{display: 'flex'}}>
-          <span>{props.item.stars_count}</span>
+          <span className={styles.starCount}>{props.item.stars_count}</span>
           {renderStarsScore()}
-          <span>({props.item.reviews_count} reviews)</span>
+          <span className={styles.reviewCount}>({props.item.reviews_count} reviews)</span>
 
         </div>
         <div style={{display: 'flex'}}>
-          <span>{props.item.food_type} | </span>
-          <span>{props.item.neighborhood} |</span>
-          <span>{props.item.price_range}</span>
+          <span className={styles.bottomDetail}>{props.item.food_type} | </span>
+          <span className={styles.bottomDetail}>{props.item.neighborhood} |</span>
+          <span className={styles.bottomDetail}>{props.item.price_range}</span>
         </div>
       </div> 
     </div>

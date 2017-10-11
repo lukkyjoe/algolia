@@ -4,3 +4,18 @@
   font-weight: bold;
   color: #000000;
 }
+
+.bottomDetail {
+  color: rgba(128, 128, 128, 0.65);
+  margin-right: 5px;
+}
+
+.starCount {
+  color: #F4B734;
+  margin-right: 5px;
+}
+
+.reviewCount {
+  color: rgba(128, 128, 128, 0.65);
+  margin-left: 10px;
+}
