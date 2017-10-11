@@ -1,5 +1,10 @@
 @media screen and (max-width: 650px) {
-   .layout { flex-direction: column; } 
+  .layout { flex-direction: column; } 
+  .sidebar { width: 100% }
+}
 
+@media screen and (min-width: 650px) {
+  .sidebar {
+    width: 25%;
   }
-
+}

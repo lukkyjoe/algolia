@@ -115,7 +115,7 @@ export default class App extends React.Component {
           </form>
         </div>
         <div className={styles.layout} style={{display: 'flex'}}>
-          <div style={{width: '25%', border: '10px', borderColor: 'black'}}>
+          <div className={styles.sidebar}>
             <FoodTypes food_types={this.state.food_types} select={this.handleSelectCuisine}/>
             <Ratings stars_count={this.state.stars_count} select={this.handleSelectRating}/>
             <PaymentOptions options={this.state.UI_selectedPayments} select={this.handleSelectPaymentOption}/>
