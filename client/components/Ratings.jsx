@@ -11,10 +11,10 @@ const StarCount = (props) => {
   let renderStars = () => {
     let starsContainer = [];
     for (let i = 0; i < props.item; i++){
-      starsContainer.push(<img style={{height: '20px', width: '20px'}} key={`${i}f`} src="../assets/plainStairs.png"></img>);
+      starsContainer.push(<img style={{height: '20px', width: '20px'}} key={`${i}f`} src="https://s3-us-west-1.amazonaws.com/algolia-graphics/plainStars.png"></img>);
     }
     for (let i = 0; i < emptyStars; i++){
-      starsContainer.push(<img style={{height: '20px', width: '20px'}} key={`${i}e`} src="../../resources/graphics/star-empty.png"></img>);
+      starsContainer.push(<img style={{height: '20px', width: '20px'}} key={`${i}e`} src="https://s3-us-west-1.amazonaws.com/algolia-graphics/star-empty.png"></img>);
     }
     return starsContainer;
   }

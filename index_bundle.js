@@ -30897,10 +30897,10 @@ var StarCount = function StarCount(props) {
   var renderStars = function renderStars() {
     var starsContainer = [];
     for (var i = 0; i < props.item; i++) {
-      starsContainer.push(_react2.default.createElement('img', { style: { height: '20px', width: '20px' }, key: i + 'f', src: '../assets/plainStairs.png' }));
+      starsContainer.push(_react2.default.createElement('img', { style: { height: '20px', width: '20px' }, key: i + 'f', src: 'https://s3-us-west-1.amazonaws.com/algolia-graphics/plainStars.png' }));
     }
     for (var _i = 0; _i < emptyStars; _i++) {
-      starsContainer.push(_react2.default.createElement('img', { style: { height: '20px', width: '20px' }, key: _i + 'e', src: '../../resources/graphics/star-empty.png' }));
+      starsContainer.push(_react2.default.createElement('img', { style: { height: '20px', width: '20px' }, key: _i + 'e', src: 'https://s3-us-west-1.amazonaws.com/algolia-graphics/star-empty.png' }));
     }
     return starsContainer;
   };
