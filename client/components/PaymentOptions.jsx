@@ -12,7 +12,7 @@ const PaymentOptions = (props) => {
         </div>
       )
     })
-  return <div>{list}</div>
+  return <div><h3>Payment Options</h3>{list}</div>
 }
 
 export default PaymentOptions;
