@@ -2,18 +2,9 @@
 Algolia project
 
 #TODOs
-• Geo location to show higher in results: https://www.algolia.com/doc/guides/searching/geo-search/#attributes-returned-within-the-results
-• Fallback if blocked (fall back can be to use IP)
-• Highlight filter
-• Pagination / Show more: https://community.algolia.com/algoliasearch-helper-js/reference.html#pagination
 • Customer questions
-• Consider refactoring to using only client where helper is not necessary
 • Background???
 • Food types needs active state
-• Disjunctive payment filter can start with the 'non options' that will be a base search?
-• Hover will not show on touch.
-• Prevent default upon enter of search bar
-• top horizontal line
 • move score to horizontally align
 • move show more
 • Active state highlight
