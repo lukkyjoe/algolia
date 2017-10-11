@@ -1,3 +1,5 @@
-.food {
-  color: red;
+.foodFilter:hover {
+  background-color: #2897C5;
+  color: white;
 }
+
