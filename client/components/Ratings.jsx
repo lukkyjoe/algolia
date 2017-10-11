@@ -11,7 +11,7 @@ const StarCount = (props) => {
   let renderStars = () => {
     let starsContainer = [];
     for (let i = 0; i < props.item; i++){
-      starsContainer.push(<img style={{height: '20px', width: '20px'}} key={`${i}f`} src="../../resources/graphics/stars-plain.png"></img>);
+      starsContainer.push(<img style={{height: '20px', width: '20px'}} key={`${i}f`} src="../assets/stars-plain.png"></img>);
     }
     for (let i = 0; i < emptyStars; i++){
       starsContainer.push(<img style={{height: '20px', width: '20px'}} key={`${i}e`} src="../../resources/graphics/star-empty.png"></img>);
