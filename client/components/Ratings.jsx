@@ -11,17 +11,17 @@ const StarCount = (props) => {
   let renderStars = () => {
     let starsContainer = [];
     for (let i = 0; i < props.item; i++){
-      starsContainer.push(<img key={`${i}f`} src="../../resources/graphics/stars-plain.png"></img>);
+      starsContainer.push(<img style={{height: '20px', width: '20px'}} key={`${i}f`} src="../../resources/graphics/stars-plain.png"></img>);
     }
     for (let i = 0; i < emptyStars; i++){
-      starsContainer.push(<img key={`${i}e`} src="../../resources/graphics/star-empty.png"></img>);
+      starsContainer.push(<img style={{height: '20px', width: '20px'}} key={`${i}e`} src="../../resources/graphics/star-empty.png"></img>);
     }
     return starsContainer;
   }
   return (
     <div onClick={() => {props.select(props.item)
         console.log('selected', props.item)
-        }}> {props.item}
+        }}>
       {renderStars()}
     </div>
   )
