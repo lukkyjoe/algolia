@@ -11,7 +11,7 @@ Algolia project
 • Background???
 • Food types needs active state
 • Disjunctive payment filter can start with the 'non options' that will be a base search?
-• Hover will not show on touch. That's OK, right?
+• Hover will not show on touch.
 • Prevent default upon enter of search bar
 
 #Assumptions (to be verified)

@@ -108,13 +108,13 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className={styles.stuff} style={{fontFamily: 'Helvetica'}}>
+      <div style={{fontFamily: 'Helvetica'}}>
         <div style={{display: 'flex', padding: '20px', backgroundColor: '#1C688E', justifyContent: 'space-around'}}>
           <form onSubmit={this.handleSubmit} style={{width: '100%'}}>
             <input style={{height: '35px', width: '100%'}} value={this.state.queryValue} onChange={this.handleChange} placeholder={'Search for Restaurants by Name, Cuisine, Location'}/>
           </form>
         </div>
-        <div style={{display: 'flex'}}>
+        <div className={styles.layout} style={{display: 'flex'}}>
           <div style={{width: '25%', border: '10px', borderColor: 'black'}}>
             <FoodTypes food_types={this.state.food_types} select={this.handleSelectCuisine}/>
             <Ratings stars_count={this.state.stars_count} select={this.handleSelectRating}/>
