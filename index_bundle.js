@@ -30592,6 +30592,7 @@ var App = function (_React$Component) {
     _this.getLocation = _this.getLocation.bind(_this);
     _this.search = _this.search.bind(_this);
     _this.handleChange = _this.handleChange.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
     _this.handleSelectCuisine = _this.handleSelectCuisine.bind(_this);
     _this.handleSelectPaymentOption = _this.handleSelectPaymentOption.bind(_this);
     _this.handleNextPage = _this.handleNextPage.bind(_this);
@@ -30633,6 +30634,11 @@ var App = function (_React$Component) {
     value: function handleChange(event) {
       this.setState({ queryValue: event.target.value });
       this.search();
+    }
+  }, {
+    key: 'handleSubmit',
+    value: function handleSubmit(event) {
+      event.preventDefault();
     }
   }, {
     key: 'handleSelectCuisine',
@@ -30691,7 +30697,7 @@ var App = function (_React$Component) {
           { style: { display: 'flex', padding: '20px', backgroundColor: '#1C688E', justifyContent: 'space-around' } },
           _react2.default.createElement(
             'form',
-            { style: { width: '100%' } },
+            { onSubmit: this.handleSubmit, style: { width: '100%' } },
             _react2.default.createElement('input', { style: { height: '35px', width: '100%' }, value: this.state.queryValue, onChange: this.handleChange, placeholder: 'Search for Restaurants by Name, Cuisine, Location' })
           )
         ),
@@ -30755,6 +30761,31 @@ var Results = function Results(props) {
 };
 
 var SingleResult = function SingleResult(props) {
+  var roundDownToHalf = function roundDownToHalf(num) {
+    return Math.floor(num * 2) / 2;
+  };
+  var renderStarsScore = function renderStarsScore() {
+    var starsArray = [];
+    var targetScore = roundDownToHalf(props.item.stars_count);
+    console.log('targetScore', targetScore);
+    var fullStars = Math.floor(targetScore);
+    console.log('fullStars', fullStars);
+    var halfStar = targetScore % 1 > 0 ? 1 : 0;
+    console.log('halfStar', halfStar);
+    var emptyStars = 5 - fullStars - halfStar;
+    console.log('emptyStars', emptyStars);
+    for (var i = 0; i < fullStars; i++) {
+      starsArray.push(_react2.default.createElement('img', { style: { height: '20px', width: '20px' }, key: i + 'f', src: 'https://s3-us-west-1.amazonaws.com/algolia-graphics/plainStars.png' }));
+    }
+    if (halfStar) {
+      starsArray.push(_react2.default.createElement('img', { style: { height: '20px', width: '20px' }, key: halfStar + 'h', src: 'https://s3-us-west-1.amazonaws.com/algolia-graphics/halfstar-whole.png' }));
+    }
+    for (var _i = 0; _i < emptyStars; _i++) {
+      starsArray.push(_react2.default.createElement('img', { style: { height: '20px', width: '20px' }, key: _i + 'e', src: 'https://s3-us-west-1.amazonaws.com/algolia-graphics/star-empty.png' }));
+    }
+    console.log(starsArray);
+    return starsArray;
+  };
   return _react2.default.createElement(
     'div',
     { style: { display: 'flex' } },
@@ -30785,7 +30816,8 @@ var SingleResult = function SingleResult(props) {
           '(',
           props.item.reviews_count,
           ')'
-        )
+        ),
+        renderStarsScore()
       ),
       _react2.default.createElement(
         'div',
