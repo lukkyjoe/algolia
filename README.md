@@ -8,9 +8,7 @@ Algolia project
 • Pagination / Show more: https://community.algolia.com/algoliasearch-helper-js/reference.html#pagination
 • Customer questions
 • Consider refactoring to using only client where helper is not necessary
-• Display x results found in y seconds
 • Background???
-• Food types needs count
 • Food types needs active state
 • Disjunctive payment filter can start with the 'non options' that will be a base search?
 • Hover will not show on touch. That's OK, right?
