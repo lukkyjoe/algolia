@@ -13,13 +13,9 @@ const SingleResult = (props) => {
   let renderStarsScore = () => {
     let starsArray = [];
     let targetScore = roundDownToHalf(props.item.stars_count);
-    console.log('targetScore', targetScore)
     let fullStars = Math.floor(targetScore);
-    console.log('fullStars', fullStars)
     let halfStar = (targetScore % 1) > 0 ? 1 : 0 
-    console.log('halfStar', halfStar)
     let emptyStars = 5 - fullStars - halfStar;
-    console.log('emptyStars', emptyStars)
     for (let i = 0; i < fullStars; i++){
       starsArray.push(<img style={{height: '20px', width: '20px'}} key={`${i}f`} src="https://s3-us-west-1.amazonaws.com/algolia-graphics/plainStars.png"></img>)
     }
@@ -29,7 +25,6 @@ const SingleResult = (props) => {
     for (let i = 0; i < emptyStars; i++){
       starsArray.push(<img style={{height: '20px', width: '20px'}} key={`${i}e`} src="https://s3-us-west-1.amazonaws.com/algolia-graphics/star-empty.png"></img>)
     }
-    console.log(starsArray);
     return starsArray;
   }
   return(
