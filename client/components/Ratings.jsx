@@ -3,7 +3,7 @@ import React from 'react';
 const Ratings = (props) => {
   const stars = props.stars_count;
   let list = stars.map((item, index) => <StarCount item={item} key={index} select={props.select}/>)
-  return <div><h3>Ratings</h3>{list}</div>
+  return <div><h3>Rating</h3>{list}</div>
 }
 
 const StarCount = (props) => {

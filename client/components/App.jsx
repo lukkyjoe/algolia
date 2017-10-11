@@ -99,9 +99,9 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <div style={{display: 'flex', padding: '10px', backgroundColor: '#1C688E', justifyContent: 'space-around'}}>
-          <form style={{width: '90%'}}>
+      <div style={{fontFamily: 'Helvetica'}}>
+        <div style={{display: 'flex', padding: '20px', backgroundColor: '#1C688E', justifyContent: 'space-around'}}>
+          <form style={{width: '100%'}}>
             <input style={{height: '35px', width: '100%'}} value={this.state.queryValue} onChange={this.handleChange} placeholder={'Search for Restaurants by Name, Cuisine, Location'}/>
           </form>
         </div>

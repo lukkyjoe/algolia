@@ -9,7 +9,7 @@ const Results = (props) => {
 const SingleResult = (props) => {
   return(
     <div style={{display: 'flex'}}>
-      <div><img src={props.item.image_url}></img></div> 
+      <div><img src={props.item.image_url} style={{width: '80px', height: '80px'}}></img></div> 
       <div>
         <h1>{props.item.name}</h1>
         <div style={{display: 'flex'}}>

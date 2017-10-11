@@ -11,7 +11,7 @@ Algolia project
 • Display x results found in y seconds
 • Background???
 • Food types needs count
-• Food types needs hover active
+• Food types needs active state
 • Disjunctive payment filter can start with the 'non options' that will be a base search?
 • Hover will not show on touch. That's OK, right?
 
