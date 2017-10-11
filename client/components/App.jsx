@@ -114,12 +114,12 @@ export default class App extends React.Component {
           </form>
         </div>
         <div style={{display: 'flex'}}>
-          <div>
+          <div style={{width: '25%'}}>
             <FoodTypes food_types={this.state.food_types} select={this.handleSelectCuisine}/>
             <Ratings stars_count={this.state.stars_count} select={this.handleSelectRating}/>
             <PaymentOptions options={this.state.UI_selectedPayments} select={this.handleSelectPaymentOption}/>
           </div>
-          <div>
+          <div style={{width: '75%'}}>
             <div style={{margin: "20px"}}>{`${this.state.content.nbHits} results found in ${this.state.content.processingTimeMS / 1000} seconds`}</div>
             <Results rawResults={this.state.hits}/>
             <button onClick={this.handleNextPage}>next page</button>            
