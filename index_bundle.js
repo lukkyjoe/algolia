@@ -31112,7 +31112,6 @@ var App = function (_React$Component) {
         var lat = position.coords.latitude;
         var lng = position.coords.longitude;
         var positionString = lat + ', ' + lng;
-        console.log(positionString);
         algolia.helper.setQueryParameter('aroundLatLng', positionString).setQuery(_this2.state.queryValue).search();
       });
     }
@@ -31168,7 +31167,6 @@ var App = function (_React$Component) {
   }, {
     key: 'handleNextPage',
     value: function handleNextPage() {
-      console.log('nextPage!');
       var currentPage = algolia.helper.getCurrentPage();
       algolia.helper.setQueryParameter('page', currentPage + 1).search();
     }
@@ -31203,21 +31201,36 @@ var App = function (_React$Component) {
             { className: _App2.default.resultsSection },
             _react2.default.createElement(
               'div',
-              { style: { margin: "20px" } },
-              this.state.content.nbHits + ' results found in ' + this.state.content.processingTimeMS / 1000 + ' seconds'
+              { className: _App2.default.resultsSummary },
+              _react2.default.createElement(
+                'div',
+                { className: _App2.default.resultsFound },
+                this.state.content.nbHits + ' results found '
+              ),
+              _react2.default.createElement(
+                'div',
+                null,
+                'in ' + this.state.content.processingTimeMS / 1000 + ' seconds'
+              ),
+              _react2.default.createElement(
+                'div',
+                { style: { width: '70%', marginLeft: '10px', display: 'flex', alignItems: 'flex-end' } },
+                _react2.default.createElement('div', { className: _App2.default.topHorizontalLine })
+              )
             ),
             _react2.default.createElement(_Results2.default, { rawResults: this.state.hits }),
             _react2.default.createElement(
               'div',
-              null,
+              { className: _App2.default.showMore },
               _react2.default.createElement(
                 'button',
-                { className: _App2.default.showMore, onClick: this.handleNextPage },
+                { style: { width: '184px', height: '37px' }, onClick: this.handleNextPage },
                 'Show more'
               )
             )
           )
-        )
+        ),
+        _react2.default.createElement('div', { className: _App2.default.horizontalLine })
       );
     }
   }]);
@@ -31291,7 +31304,7 @@ var SingleResult = function SingleResult(props) {
     ),
     _react2.default.createElement(
       'div',
-      { style: { margin: '10px' } },
+      { style: { display: 'flex', flexDirection: 'column', margin: '10px' } },
       _react2.default.createElement(
         'div',
         { className: _Results2.default.restaurantName },
@@ -31302,13 +31315,13 @@ var SingleResult = function SingleResult(props) {
         { style: { display: 'flex' } },
         _react2.default.createElement(
           'span',
-          null,
+          { className: _Results2.default.starCount },
           props.item.stars_count
         ),
         renderStarsScore(),
         _react2.default.createElement(
           'span',
-          null,
+          { className: _Results2.default.reviewCount },
           '(',
           props.item.reviews_count,
           ' reviews)'
@@ -31319,19 +31332,19 @@ var SingleResult = function SingleResult(props) {
         { style: { display: 'flex' } },
         _react2.default.createElement(
           'span',
-          null,
+          { className: _Results2.default.bottomDetail },
           props.item.food_type,
           ' | '
         ),
         _react2.default.createElement(
           'span',
-          null,
+          { className: _Results2.default.bottomDetail },
           props.item.neighborhood,
           ' |'
         ),
         _react2.default.createElement(
           'span',
-          null,
+          { className: _Results2.default.bottomDetail },
           props.item.price_range
         )
       )
@@ -31381,11 +31394,14 @@ exports = module.exports = __webpack_require__(103)(undefined);
 
 
 // module
-exports.push([module.i, "/* Anchor and Hope: */\n.Results__restaurantName___2xoBS{\n  font-size: 16px;\n  font-weight: bold;\n  color: #000000;\n}\n", ""]);
+exports.push([module.i, "/* Anchor and Hope: */\n.Results__restaurantName___2xoBS{\n  font-size: 16px;\n  font-weight: bold;\n  color: #000000;\n}\n\n.Results__bottomDetail___3E5ic {\n  color: rgba(128, 128, 128, 0.65);\n  margin-right: 5px;\n}\n\n.Results__starCount___2VKUZ {\n  color: #F4B734;\n  margin-right: 5px;\n}\n\n.Results__reviewCount___31_k8 {\n  color: rgba(128, 128, 128, 0.65);\n  margin-left: 10px;\n}", ""]);
 
 // exports
 exports.locals = {
-	"restaurantName": "Results__restaurantName___2xoBS"
+	"restaurantName": "Results__restaurantName___2xoBS",
+	"bottomDetail": "Results__bottomDetail___3E5ic",
+	"starCount": "Results__starCount___2VKUZ",
+	"reviewCount": "Results__reviewCount___31_k8"
 };
 
 /***/ }),
@@ -31522,9 +31538,7 @@ var FoodTypes = function FoodTypes(props) {
       _react2.default.createElement(
         'div',
         { className: _App2.default.facetCount },
-        '(',
-        item.count,
-        ')'
+        item.count
       )
     );
   });
@@ -31551,7 +31565,7 @@ exports = module.exports = __webpack_require__(103)(undefined);
 
 
 // module
-exports.push([module.i, "@media screen and (max-width: 650px) {\n  .App__layout___1ELPa { flex-direction: column; } \n  .App__sidebar___FHQh1 { \n    width: 100%;\n    margin-left: 20px;  \n  }\n}\n\n@media screen and (min-width: 650px) {\n  .App__sidebar___FHQh1 {\n    width: 25%;\n    margin-left: 20px;\n    border-right: black;\n    border-right-width: 2px;\n  }\n  .App__filter___1u54s {\n    display: flex;\n    justify-content: space-between;\n    margin: 5px;\n    padding: 2px;\n    flex-direction: row;\n  }\n  .App__filter___1u54s:hover {\n    display: flex;\n    background-color: #2897C5;\n    color: white;\n    margin: 5px;\n    padding: 2px;\n  }\n  .App__facetCount___qtlOL {\n    align-self: center;\n    justify-content: flex-end;\n  }\n\n  .App__verticalLine___1hIVI {\n    border-left: solid 2px rgba(128, 128, 128, 0.45);\n    margin-left: 3%;\n    margin-right: 5%;\n  }\n}\n\n.App__resultsSection___3AiYC {\n  display: flex;\n  flex-direction: column;\n}\n\n.App__showMore___3UGnS {\n  align-content: center;\n  width: 184px;\n  height: 37px;\n  justify-content: center;\n}", ""]);
+exports.push([module.i, "@media screen and (max-width: 650px) {\n  .App__layout___1ELPa { flex-direction: column; } \n  .App__sidebar___FHQh1 { \n    width: 100%;\n    margin-left: 20px;  \n  }\n}\n\n@media screen and (min-width: 650px) {\n  .App__sidebar___FHQh1 {\n    width: 25%;\n    margin-left: 20px;\n    border-right: black;\n    border-right-width: 2px;\n  }\n  .App__filter___1u54s {\n    display: flex;\n    justify-content: space-between;\n    margin: 5px;\n    padding: 2px;\n    flex-direction: row;\n  }\n  .App__filter___1u54s:hover {\n    display: flex;\n    background-color: #2897C5;\n    color: white;\n    margin: 5px;\n    padding: 2px;\n  }\n  .App__facetCount___qtlOL {\n    align-self: center;\n    justify-content: flex-end;\n    color: rgba(128, 128, 128, 0.65);\n  }\n\n  .App__verticalLine___1hIVI {\n    border-left: solid 2px rgba(128, 128, 128, 0.45);\n    margin-left: 3%;\n    margin-right: 5%;\n  }\n}\n\n.App__horizontalLine___N3gIl {\n  width:100%; \n  height:2px; \n  background: rgba(128, 128, 128, 0.45);\n}\n\n.App__topHorizontalLine___1II5P {\n  margin-left: 5px;\n  width: 80%; \n  height:2px; \n  background: rgba(128, 128, 128, 0.45);\n  align-self: flex-end;\n}\n\n.App__resultsSection___3AiYC {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n}\n\n.App__showMore___3UGnS {\n  align-content: center;\n  justify-content: center;\n  align-self: center;\n}\n\n.App__resultsSummary___2k7kg {\n  display: flex;\n  margin: 20px;\n  white-space: nowrap;\n}\n\n.App__resultsFound___1WY2a {\n  font-weight: bold;\n  margin-right: 5px;\n  white-space: nowrap;\n}", ""]);
 
 // exports
 exports.locals = {
@@ -31560,8 +31574,12 @@ exports.locals = {
 	"filter": "App__filter___1u54s",
 	"facetCount": "App__facetCount___qtlOL",
 	"verticalLine": "App__verticalLine___1hIVI",
+	"horizontalLine": "App__horizontalLine___N3gIl",
+	"topHorizontalLine": "App__topHorizontalLine___1II5P",
 	"resultsSection": "App__resultsSection___3AiYC",
-	"showMore": "App__showMore___3UGnS"
+	"showMore": "App__showMore___3UGnS",
+	"resultsSummary": "App__resultsSummary___2k7kg",
+	"resultsFound": "App__resultsFound___1WY2a"
 };
 
 /***/ }),
