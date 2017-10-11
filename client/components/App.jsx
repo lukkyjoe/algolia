@@ -9,8 +9,9 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      content: "",
       queryValue: "",
-      results: [],
+      hits: [],
       food_types: [], 
       stars_count: [0,1,2,3,4,5],
       UI_selectedPayments: {'AMEX': true, 'Visa': true, 'Discover': true, 'Mastercard': true},
@@ -43,7 +44,8 @@ export default class App extends React.Component {
     algolia.helper.on('result', (content) => {
       console.log('content', content);
       this.setState({
-        results: content.hits,
+        content: content,
+        hits: content.hits,
         food_types: content.getFacetValues('food_type'),
       })
     })
@@ -118,8 +120,8 @@ export default class App extends React.Component {
             <PaymentOptions options={this.state.UI_selectedPayments} select={this.handleSelectPaymentOption}/>
           </div>
           <div>
-
-            <Results rawResults={this.state.results}/>
+            <div>{`${this.state.content.nbHits} results found in ${this.state.content.processingTimeMS / 1000} seconds`}</div>
+            <Results rawResults={this.state.hits}/>
             <button onClick={this.handleNextPage}>next page</button>            
           </div>
         </div>
