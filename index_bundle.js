@@ -31329,7 +31329,7 @@ var SingleResult = function SingleResult(props) {
       ),
       _react2.default.createElement(
         'div',
-        { style: { display: 'flex' } },
+        { className: _Results2.default.bottomDetailContainer },
         _react2.default.createElement(
           'span',
           { className: _Results2.default.bottomDetail },
@@ -31394,11 +31394,12 @@ exports = module.exports = __webpack_require__(103)(undefined);
 
 
 // module
-exports.push([module.i, "/* Anchor and Hope: */\n.Results__restaurantName___2xoBS{\n  font-size: 16px;\n  font-weight: bold;\n  color: #000000;\n}\n\n.Results__bottomDetail___3E5ic {\n  color: rgba(128, 128, 128, 0.65);\n  margin-right: 5px;\n}\n\n.Results__starCount___2VKUZ {\n  color: #F4B734;\n  margin-right: 5px;\n}\n\n.Results__reviewCount___31_k8 {\n  color: rgba(128, 128, 128, 0.65);\n  margin-left: 10px;\n}", ""]);
+exports.push([module.i, "/* Anchor and Hope: */\n\n@media screen and (min-width: 650px){\n  .Results__restaurantName___2xoBS{\n    font-size: 16px;\n    font-weight: bold;\n    color: #000000;\n  }\n  \n  .Results__bottomDetailContainer___3TlzJ {\n    display: flex;\n  }\n  \n  .Results__bottomDetail___3E5ic {\n    color: rgba(128, 128, 128, 0.65);\n    margin-right: 5px;\n  }\n  \n  .Results__starCount___2VKUZ {\n    color: #F4B734;\n    margin-right: 5px;\n  }\n  \n  .Results__reviewCount___31_k8 {\n    color: rgba(128, 128, 128, 0.65);\n    margin-left: 10px;\n  }\n}\n\n\n@media screen and (max-width: 650px) {\n  .Results__bottomDetailContainer___3TlzJ {\n    display: flex;\n    flex-direction: column;\n  }\n  \n  .Results__restaurantName___2xoBS{\n    font-size: 16px;\n    font-weight: bold;\n    color: #000000;\n  }\n  \n  .Results__bottomDetail___3E5ic {\n    color: rgba(128, 128, 128, 0.65);\n    margin-right: 5px;\n  }\n  \n  .Results__starCount___2VKUZ {\n    color: #F4B734;\n    margin-right: 5px;\n  }\n  \n  .Results__reviewCount___31_k8 {\n    color: rgba(128, 128, 128, 0.65);\n    margin-left: 10px;\n  }\n}", ""]);
 
 // exports
 exports.locals = {
 	"restaurantName": "Results__restaurantName___2xoBS",
+	"bottomDetailContainer": "Results__bottomDetailContainer___3TlzJ",
 	"bottomDetail": "Results__bottomDetail___3E5ic",
 	"starCount": "Results__starCount___2VKUZ",
 	"reviewCount": "Results__reviewCount___31_k8"
@@ -31565,7 +31566,7 @@ exports = module.exports = __webpack_require__(103)(undefined);
 
 
 // module
-exports.push([module.i, "@media screen and (max-width: 650px) {\n  .App__layout___1ELPa { flex-direction: column; } \n  .App__sidebar___FHQh1 { \n    width: 100%;\n    margin-left: 20px;  \n  }\n}\n\n@media screen and (min-width: 650px) {\n  .App__sidebar___FHQh1 {\n    width: 25%;\n    margin-left: 20px;\n    border-right: black;\n    border-right-width: 2px;\n  }\n  .App__filter___1u54s {\n    display: flex;\n    justify-content: space-between;\n    margin: 5px;\n    padding: 2px;\n    flex-direction: row;\n  }\n  .App__filter___1u54s:hover {\n    display: flex;\n    background-color: #2897C5;\n    color: white;\n    margin: 5px;\n    padding: 2px;\n  }\n  .App__facetCount___qtlOL {\n    align-self: center;\n    justify-content: flex-end;\n    color: rgba(128, 128, 128, 0.65);\n  }\n\n  .App__verticalLine___1hIVI {\n    border-left: solid 2px rgba(128, 128, 128, 0.45);\n    margin-left: 3%;\n    margin-right: 5%;\n  }\n}\n\n.App__horizontalLine___N3gIl {\n  width:100%; \n  height:2px; \n  background: rgba(128, 128, 128, 0.45);\n}\n\n.App__topHorizontalLine___1II5P {\n  margin-left: 5px;\n  width: 80%; \n  height:2px; \n  background: rgba(128, 128, 128, 0.45);\n  align-self: flex-end;\n}\n\n.App__resultsSection___3AiYC {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n}\n\n.App__showMore___3UGnS {\n  align-content: center;\n  justify-content: center;\n  align-self: center;\n}\n\n.App__resultsSummary___2k7kg {\n  display: flex;\n  margin: 20px;\n  white-space: nowrap;\n}\n\n.App__resultsFound___1WY2a {\n  font-weight: bold;\n  margin-right: 5px;\n  white-space: nowrap;\n}", ""]);
+exports.push([module.i, "@media screen and (max-width: 650px) {\n  .App__layout___1ELPa { flex-direction: column; } \n  .App__sidebar___FHQh1 { \n    width: 100%;\n    margin-left: 20px;  \n  }\n  .App__filter___1u54s {\n    display: flex;\n    justify-content: space-between;\n    margin: 5px;\n    padding: 2px;\n    flex-direction: row;\n  }\n  .App__facetCount___qtlOL {\n    align-self: center;\n    justify-content: flex-end;\n    color: rgba(128, 128, 128, 0.65);\n    margin-right: 10px;\n  }\n}\n\n@media screen and (min-width: 650px) {\n  .App__sidebar___FHQh1 {\n    width: 25%;\n    margin-left: 20px;\n    border-right: black;\n    border-right-width: 2px;\n  }\n  .App__filter___1u54s {\n    display: flex;\n    justify-content: space-between;\n    margin: 5px;\n    padding: 2px;\n    flex-direction: row;\n  }\n  .App__filter___1u54s:hover {\n    display: flex;\n    background-color: #2897C5;\n    color: white;\n    margin: 5px;\n    padding: 2px;\n  }\n  .App__facetCount___qtlOL {\n    align-self: center;\n    justify-content: flex-end;\n    color: rgba(128, 128, 128, 0.65);\n  }\n\n  .App__verticalLine___1hIVI {\n    border-left: solid 2px rgba(128, 128, 128, 0.45);\n    margin-left: 3%;\n    margin-right: 5%;\n  }\n}\n\n.App__horizontalLine___N3gIl {\n  width:100%; \n  height:2px; \n  background: rgba(128, 128, 128, 0.45);\n}\n\n.App__topHorizontalLine___1II5P {\n  margin-left: 5px;\n  width: 80%; \n  height:2px; \n  background: rgba(128, 128, 128, 0.45);\n  align-self: flex-end;\n}\n\n.App__resultsSection___3AiYC {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n}\n\n.App__showMore___3UGnS {\n  align-content: center;\n  justify-content: center;\n  align-self: center;\n}\n\n.App__resultsSummary___2k7kg {\n  display: flex;\n  margin: 20px;\n  white-space: nowrap;\n}\n\n.App__resultsFound___1WY2a {\n  font-weight: bold;\n  margin-right: 5px;\n  white-space: nowrap;\n}", ""]);
 
 // exports
 exports.locals = {
