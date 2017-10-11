@@ -21,13 +21,13 @@ const SingleResult = (props) => {
     let emptyStars = 5 - fullStars - halfStar;
     console.log('emptyStars', emptyStars)
     for (let i = 0; i < fullStars; i++){
-      starsArray.push(<img style={{height: '20px', width: '20px'}} src="https://s3-us-west-1.amazonaws.com/algolia-graphics/plainStars.png"></img>)
+      starsArray.push(<img style={{height: '20px', width: '20px'}} key={`${i}f`} src="https://s3-us-west-1.amazonaws.com/algolia-graphics/plainStars.png"></img>)
     }
     if (halfStar) {
-      starsArray.push(<img style={{height: '20px', width: '20px'}} src="https://s3-us-west-1.amazonaws.com/algolia-graphics/halfstar-whole.png"></img>)
+      starsArray.push(<img style={{height: '20px', width: '20px'}} key={`${halfStar}h`} src="https://s3-us-west-1.amazonaws.com/algolia-graphics/halfstar-whole.png"></img>)
     }
     for (let i = 0; i < emptyStars; i++){
-      starsArray.push(<img style={{height: '20px', width: '20px'}} src="https://s3-us-west-1.amazonaws.com/algolia-graphics/star-empty.png"></img>)
+      starsArray.push(<img style={{height: '20px', width: '20px'}} key={`${i}e`} src="https://s3-us-west-1.amazonaws.com/algolia-graphics/star-empty.png"></img>)
     }
     console.log(starsArray);
     return starsArray;
