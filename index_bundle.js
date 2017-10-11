@@ -30583,11 +30583,14 @@ var App = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
     _this.state = {
+      content: "",
       queryValue: "",
-      results: [],
+      hits: [],
       food_types: [],
       stars_count: [0, 1, 2, 3, 4, 5],
-      UI_selectedPayments: { 'AMEX': true, 'Visa': true, 'Discover': true, 'Mastercard': true }
+      UI_selectedPayments: { 'AMEX': true, 'Visa': true, 'Discover': true, 'Mastercard': true },
+      nbHits: 0,
+      processingTimeMS: 0
     };
     _this.getLocation = _this.getLocation.bind(_this);
     _this.search = _this.search.bind(_this);
@@ -30619,11 +30622,11 @@ var App = function (_React$Component) {
     value: function search() {
       var _this2 = this;
 
-      console.log(algolia.helper);
       algolia.helper.on('result', function (content) {
         console.log('content', content);
         _this2.setState({
-          results: content.hits,
+          content: content,
+          hits: content.hits,
           food_types: content.getFacetValues('food_type')
         });
       });
@@ -30714,7 +30717,12 @@ var App = function (_React$Component) {
           _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(_Results2.default, { rawResults: this.state.results }),
+            _react2.default.createElement(
+              'div',
+              null,
+              this.state.content.nbHits + ' results found in ' + this.state.content.processingTimeMS / 1000 + ' seconds'
+            ),
+            _react2.default.createElement(_Results2.default, { rawResults: this.state.hits }),
             _react2.default.createElement(
               'button',
               { onClick: this.handleNextPage },
@@ -30767,13 +30775,9 @@ var SingleResult = function SingleResult(props) {
   var renderStarsScore = function renderStarsScore() {
     var starsArray = [];
     var targetScore = roundDownToHalf(props.item.stars_count);
-    console.log('targetScore', targetScore);
     var fullStars = Math.floor(targetScore);
-    console.log('fullStars', fullStars);
     var halfStar = targetScore % 1 > 0 ? 1 : 0;
-    console.log('halfStar', halfStar);
     var emptyStars = 5 - fullStars - halfStar;
-    console.log('emptyStars', emptyStars);
     for (var i = 0; i < fullStars; i++) {
       starsArray.push(_react2.default.createElement('img', { style: { height: '20px', width: '20px' }, key: i + 'f', src: 'https://s3-us-west-1.amazonaws.com/algolia-graphics/plainStars.png' }));
     }
@@ -30783,7 +30787,6 @@ var SingleResult = function SingleResult(props) {
     for (var _i = 0; _i < emptyStars; _i++) {
       starsArray.push(_react2.default.createElement('img', { style: { height: '20px', width: '20px' }, key: _i + 'e', src: 'https://s3-us-west-1.amazonaws.com/algolia-graphics/star-empty.png' }));
     }
-    console.log(starsArray);
     return starsArray;
   };
   return _react2.default.createElement(
@@ -30877,7 +30880,9 @@ var FoodTypes = function FoodTypes(props) {
           props.select(item.name);
         } },
       ' ',
-      item.name
+      item.name,
+      ': ',
+      item.count
     );
   });
   return _react2.default.createElement(
