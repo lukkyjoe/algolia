@@ -4,6 +4,7 @@ import Results from './Results.jsx'
 import FoodTypes from './FoodTypes.jsx'
 import Ratings from './Ratings.jsx'
 import PaymentOptions from './PaymentOptions.jsx'
+import styles from './App.css'
 
 export default class App extends React.Component {
   constructor(props){
@@ -107,7 +108,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div style={{fontFamily: 'Helvetica'}}>
+      <div className={styles.stuff} style={{fontFamily: 'Helvetica'}}>
         <div style={{display: 'flex', padding: '20px', backgroundColor: '#1C688E', justifyContent: 'space-around'}}>
           <form onSubmit={this.handleSubmit} style={{width: '100%'}}>
             <input style={{height: '35px', width: '100%'}} value={this.state.queryValue} onChange={this.handleChange} placeholder={'Search for Restaurants by Name, Cuisine, Location'}/>
@@ -122,7 +123,7 @@ export default class App extends React.Component {
           <div>
             <div style={{margin: "20px"}}>{`${this.state.content.nbHits} results found in ${this.state.content.processingTimeMS / 1000} seconds`}</div>
             <Results rawResults={this.state.hits}/>
-            <div style={{display: 'flex'}}><button style={{alignItems: 'center'}} onClick={this.handleNextPage}>Show more</button></div>           
+            <div style={{display: 'flex'}}><button style={{alignItems : 'center'}} onClick={this.handleNextPage}>Show more</button></div>           
           </div>
         </div>
       </div>
