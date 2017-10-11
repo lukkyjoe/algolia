@@ -16,6 +16,8 @@ Algolia project
 • top horizontal line
 • move score to horizontally align
 • move show more
+• Active state highlight
+• media query: flex-column for summary
 
 #Assumptions (verified)
 1. For the left side bar options: I'm assuming that it's possible to select a cuisine type AND a rating. (e.g. 'Japanese' AND 4 stars)

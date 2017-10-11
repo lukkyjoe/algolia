@@ -39,7 +39,7 @@ const SingleResult = (props) => {
           <span className={styles.reviewCount}>({props.item.reviews_count} reviews)</span>
 
         </div>
-        <div style={{display: 'flex'}}>
+        <div className={styles.bottomDetailContainer}>
           <span className={styles.bottomDetail}>{props.item.food_type} | </span>
           <span className={styles.bottomDetail}>{props.item.neighborhood} |</span>
           <span className={styles.bottomDetail}>{props.item.price_range}</span>
