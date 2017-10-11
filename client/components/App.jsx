@@ -120,10 +120,11 @@ export default class App extends React.Component {
             <Ratings stars_count={this.state.stars_count} select={this.handleSelectRating}/>
             <PaymentOptions options={this.state.UI_selectedPayments} select={this.handleSelectPaymentOption}/>
           </div>
-          <div>
+          <div className={styles.verticalLine}></div>
+          <div className={styles.resultsSection}>
             <div style={{margin: "20px"}}>{`${this.state.content.nbHits} results found in ${this.state.content.processingTimeMS / 1000} seconds`}</div>
             <Results rawResults={this.state.hits}/>
-            <div style={{display: 'flex'}}><button style={{alignItems : 'center'}} onClick={this.handleNextPage}>Show more</button></div>           
+            <div><button className={styles.showMore} onClick={this.handleNextPage}>Show more</button></div>          
           </div>
         </div>
       </div>

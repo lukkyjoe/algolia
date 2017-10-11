@@ -36,7 +36,7 @@ const SingleResult = (props) => {
         <div style={{display: 'flex'}}>
           <span>{props.item.stars_count}</span>
           {renderStarsScore()}
-          <span>({props.item.reviews_count})</span>
+          <span>({props.item.reviews_count} reviews)</span>
 
         </div>
         <div style={{display: 'flex'}}>
