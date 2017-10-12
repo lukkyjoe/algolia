@@ -31768,7 +31768,7 @@ var StarCount = function StarCount(props) {
     { style: { display: 'flex' },
       onClick: function onClick() {
         props.select(props.item);
-        console.log('selected', props.item);
+        {/* console.log('selected', props.item) */}
       } },
     renderStars(),
     ' ',
