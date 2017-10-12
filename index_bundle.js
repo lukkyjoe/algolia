@@ -31103,7 +31103,7 @@ var App = function (_React$Component) {
       var _this2 = this;
 
       algolia.helper.on('result', function (content) {
-        console.log('content', content);
+        // console.log('content', content);
         _this2.setState({
           content: content,
           hits: content.hits,
@@ -31133,7 +31133,7 @@ var App = function (_React$Component) {
     key: 'handleSelectCuisine',
     value: function handleSelectCuisine(facetValue) {
       algolia.helper.toggleFacetRefinement('food_type', facetValue).search();
-      console.log('foodtype refinements:', algolia.helper.getRefinements('food_type'));
+      // console.log('foodtype refinements:', algolia.helper.getRefinements('food_type'));
     }
   }, {
     key: 'handleHover',

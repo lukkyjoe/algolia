@@ -36,7 +36,7 @@ export default class App extends React.Component {
 
   search(){
     algolia.helper.on('result', (content) => {
-      console.log('content', content);
+      // console.log('content', content);
       this.setState({
         content: content,
         hits: content.hits,
@@ -64,7 +64,7 @@ export default class App extends React.Component {
   handleSelectCuisine(facetValue){
     algolia.helper.toggleFacetRefinement('food_type', facetValue)
       .search();
-    console.log('foodtype refinements:', algolia.helper.getRefinements('food_type'));
+    // console.log('foodtype refinements:', algolia.helper.getRefinements('food_type'));
   }
 
   handleHover(){
