@@ -4,7 +4,7 @@ import classnames from 'classnames/bind'
 
 const FoodTypes = (props) => {
   const foodTypes = props.food_types;
-  let list = foodTypes.map((item, index) => <SingleFoodType item={item} key={index} select={props.select} hover={props.hover}/>)
+  let list = foodTypes.map((item, index) => <SingleFoodType item={item} key={index} select={props.select} hover={props.hover} highlight={props.highlight}/>)
   return <div><h3>Cuisine/Food Type</h3>{list}</div>
 }
 
@@ -29,9 +29,9 @@ class SingleFoodType extends React.Component {
   }
 
   render(){
-    let cuisineHighlight = cx({highlight: this.state.hover});
-    let cuisineFacetCountHighlight = cx({facetCountHighlight: this.state.hover})
-    let filterContainer = cx({filter: true, highlightBackground: this.state.hover})
+    let cuisineHighlight = cx({highlight: (this.state.hover || this.props.highlight)});
+    let cuisineFacetCountHighlight = cx({facetCountHighlight: (this.state.hover || this.props.highlight)})
+    let filterContainer = cx({filter: true, highlightBackground: (this.state.hover || this.props.highlight)})
     return (
       <div className={filterContainer} onMouseOver={this.handleHover} onMouseLeave={this.leaveHover} onClick={() => {this.props.select(this.props.item.name)}}> 
         <div className={cuisineHighlight}>{this.props.item.name}</div> <div className={cuisineFacetCountHighlight}>{this.props.item.count}</div>

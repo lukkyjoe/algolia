@@ -31080,7 +31080,7 @@ var App = function (_React$Component) {
       UI_selectedPayments: { 'AMEX': true, 'Visa': true, 'Discover': true, 'Mastercard': true },
       nbHits: 0,
       processingTimeMS: 0,
-      highlightFoodType: false
+      highlightFood: false
     };
     _this.search = _this.search.bind(_this);
     _this.handleChange = _this.handleChange.bind(_this);
@@ -31088,7 +31088,6 @@ var App = function (_React$Component) {
     _this.handleSelectCuisine = _this.handleSelectCuisine.bind(_this);
     _this.handleSelectPaymentOption = _this.handleSelectPaymentOption.bind(_this);
     _this.handleNextPage = _this.handleNextPage.bind(_this);
-    _this.handleHover = _this.handleHover.bind(_this);
     return _this;
   }
 
@@ -31133,12 +31132,15 @@ var App = function (_React$Component) {
     key: 'handleSelectCuisine',
     value: function handleSelectCuisine(facetValue) {
       algolia.helper.toggleFacetRefinement('food_type', facetValue).search();
+      var isFoodTypeSelected = function isFoodTypeSelected() {
+        if (algolia.helper.getRefinements('food_type').length) {
+          return true;
+        } else {
+          return false;
+        }
+      };
+      this.setState({ highlightFood: isFoodTypeSelected() });
       // console.log('foodtype refinements:', algolia.helper.getRefinements('food_type'));
-    }
-  }, {
-    key: 'handleHover',
-    value: function handleHover() {
-      console.log('hovering...');
     }
   }, {
     key: 'handleSelectRating',
@@ -31200,7 +31202,7 @@ var App = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: _App2.default.sidebar },
-            _react2.default.createElement(_FoodTypes2.default, { food_types: this.state.food_types, select: this.handleSelectCuisine, hover: this.handleHover }),
+            _react2.default.createElement(_FoodTypes2.default, { food_types: this.state.food_types, select: this.handleSelectCuisine, hover: this.handleHover, highlight: this.state.highlightFood }),
             _react2.default.createElement(_Ratings2.default, { stars_count: this.state.stars_count, select: this.handleSelectRating }),
             _react2.default.createElement(_PaymentOptions2.default, { options: this.state.UI_selectedPayments, select: this.handleSelectPaymentOption })
           ),
@@ -31545,7 +31547,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var FoodTypes = function FoodTypes(props) {
   var foodTypes = props.food_types;
   var list = foodTypes.map(function (item, index) {
-    return _react2.default.createElement(SingleFoodType, { item: item, key: index, select: props.select, hover: props.hover });
+    return _react2.default.createElement(SingleFoodType, { item: item, key: index, select: props.select, hover: props.hover, highlight: props.highlight });
   });
   return _react2.default.createElement(
     'div',
@@ -31592,9 +31594,9 @@ var SingleFoodType = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var cuisineHighlight = cx({ highlight: this.state.hover });
-      var cuisineFacetCountHighlight = cx({ facetCountHighlight: this.state.hover });
-      var filterContainer = cx({ filter: true, highlightBackground: this.state.hover });
+      var cuisineHighlight = cx({ highlight: this.state.hover || this.props.highlight });
+      var cuisineFacetCountHighlight = cx({ facetCountHighlight: this.state.hover || this.props.highlight });
+      var filterContainer = cx({ filter: true, highlightBackground: this.state.hover || this.props.highlight });
       return _react2.default.createElement(
         'div',
         { className: filterContainer, onMouseOver: this.handleHover, onMouseLeave: this.leaveHover, onClick: function onClick() {
@@ -31630,7 +31632,7 @@ exports = module.exports = __webpack_require__(103)(undefined);
 
 
 // module
-exports.push([module.i, "@media screen and (max-width: 650px) {\n  .App__layout___1ELPa { flex-direction: column; } \n  .App__sidebar___FHQh1 { \n    width: 100%;\n    margin-left: 20px;  \n  }\n  .App__filter___1u54s {\n    display: flex;\n    justify-content: space-between;\n    margin: 5px;\n    padding: 2px;\n    flex-direction: row;\n  }\n  .App__facetCount___qtlOL {\n    align-self: center;\n    justify-content: flex-end;\n    color: rgba(128, 128, 128, 0.65);\n    margin-right: 10px;\n  }\n}\n\n@media screen and (min-width: 650px) {\n  .App__sidebar___FHQh1 {\n    width: 25%;\n    margin-left: 20px;\n    border-right: black;\n    border-right-width: 2px;\n  }\n  .App__filter___1u54s {\n    display: flex;\n    justify-content: space-between;\n    margin: 5px;\n    padding: 2px;\n    flex-direction: row;\n  }\n  /* .filter:hover {\n    display: flex;\n    background-color: #2897C5;\n    margin: 5px;\n    padding: 2px;\n  } */\n  .App__highlight___3VPyH {\n    color: white;\n  }\n\n  .App__highlightBackground___24J3p {\n    background-color: #2897C5;\n  }\n\n  .App__facetCount___qtlOL {\n    align-self: center;\n    justify-content: flex-end;\n    color: rgba(128, 128, 128, 0.65);\n  }\n\n  .App__facetCountHighlight___wmYfL {\n    align-self: center;\n    justify-content: flex-end;\n    color: white;\n  }\n\n  .App__verticalLine___1hIVI {\n    border-left: solid 2px rgba(128, 128, 128, 0.45);\n    margin-left: 3%;\n    margin-right: 5%;\n  }\n}\n\n.App__horizontalLine___N3gIl {\n  width:100%; \n  height:2px; \n  background: rgba(128, 128, 128, 0.45);\n}\n\n.App__topHorizontalLine___1II5P {\n  margin-left: 5px;\n  width: 80%; \n  height:2px; \n  background: rgba(128, 128, 128, 0.45);\n  align-self: flex-end;\n}\n\n.App__resultsSection___3AiYC {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n}\n\n.App__showMore___3UGnS {\n  margin-top: 30px;\n  align-content: center;\n  justify-content: center;\n  align-self: center;\n}\n\n.App__resultsSummary___2k7kg {\n  display: flex;\n  margin: 20px;\n  white-space: nowrap;\n}\n\n.App__resultsFound___1WY2a {\n  font-weight: bold;\n  margin-right: 5px;\n  white-space: nowrap;\n}", ""]);
+exports.push([module.i, "@media screen and (max-width: 650px) {\n  .App__layout___1ELPa { flex-direction: column; } \n  .App__sidebar___FHQh1 { \n    width: 100%;\n    margin-left: 20px;  \n  }\n  .App__filter___1u54s {\n    display: flex;\n    justify-content: space-between;\n    margin: 5px;\n    padding: 2px;\n    flex-direction: row;\n  }\n  .App__facetCount___qtlOL {\n    align-self: center;\n    justify-content: flex-end;\n    color: rgba(128, 128, 128, 0.65);\n  }\n}\n\n@media screen and (min-width: 650px) {\n  .App__sidebar___FHQh1 {\n    width: 25%;\n    margin-left: 20px;\n    border-right: black;\n    border-right-width: 2px;\n  }\n  .App__filter___1u54s {\n    display: flex;\n    justify-content: space-between;\n    margin: 5px;\n    padding: 2px;\n    flex-direction: row;\n  }\n  /* .filter:hover {\n    display: flex;\n    background-color: #2897C5;\n    margin: 5px;\n    padding: 2px;\n  } */\n  .App__highlight___3VPyH {\n    color: white;\n  }\n\n  .App__highlightBackground___24J3p {\n    background-color: #2897C5;\n  }\n\n  .App__facetCount___qtlOL {\n    align-self: center;\n    justify-content: flex-end;\n    color: rgba(128, 128, 128, 0.65);\n  }\n\n  .App__facetCountHighlight___wmYfL {\n    align-self: center;\n    justify-content: flex-end;\n    color: white;\n  }\n\n  .App__verticalLine___1hIVI {\n    border-left: solid 2px rgba(128, 128, 128, 0.45);\n    margin-left: 3%;\n    margin-right: 5%;\n  }\n}\n\n.App__horizontalLine___N3gIl {\n  width:100%; \n  height:2px; \n  background: rgba(128, 128, 128, 0.45);\n}\n\n.App__topHorizontalLine___1II5P {\n  margin-left: 5px;\n  width: 80%; \n  height:2px; \n  background: rgba(128, 128, 128, 0.45);\n  align-self: flex-end;\n}\n\n.App__resultsSection___3AiYC {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n}\n\n.App__showMore___3UGnS {\n  margin-top: 30px;\n  align-content: center;\n  justify-content: center;\n  align-self: center;\n}\n\n.App__resultsSummary___2k7kg {\n  display: flex;\n  margin: 20px;\n  white-space: nowrap;\n}\n\n.App__resultsFound___1WY2a {\n  font-weight: bold;\n  margin-right: 5px;\n  white-space: nowrap;\n}", ""]);
 
 // exports
 exports.locals = {
