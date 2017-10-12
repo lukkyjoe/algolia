@@ -19,6 +19,7 @@ export default class App extends React.Component {
       nbHits: 0,
       processingTimeMS: 0,
       highlightFood: false,
+      selectedRating: 0,
     }
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -26,6 +27,7 @@ export default class App extends React.Component {
     this.handleSelectCuisine = this.handleSelectCuisine.bind(this);
     this.handleSelectPaymentOption = this.handleSelectPaymentOption.bind(this);
     this.handleNextPage = this.handleNextPage.bind(this);
+    this.handleSelectRating = this.handleSelectRating.bind(this);
   }
   
   componentWillMount(){
@@ -77,6 +79,9 @@ export default class App extends React.Component {
     algolia.helper.clearRefinements('stars_count')
       .addNumericRefinement('stars_count', '>=', rating)
       .search(); 
+    // console.log(algolia.helper.getRefinements('stars_count'))      
+    // console.log(algolia.helper.getRefinements('stars_count').length)
+    this.setState({selectedRating: rating})
   }
 
   handleSelectPaymentOption(type){
@@ -121,7 +126,7 @@ export default class App extends React.Component {
         <div className={styles.layout} style={{display: 'flex'}}>
           <div className={styles.sidebar}>
             <FoodTypes food_types={this.state.food_types} select={this.handleSelectCuisine} hover={this.handleHover} highlight={this.state.highlightFood}/>
-            <Ratings stars_count={this.state.stars_count} select={this.handleSelectRating}/>
+            <Ratings stars_count={this.state.stars_count} select={this.handleSelectRating} rating={this.state.selectedRating}/>
             <PaymentOptions options={this.state.UI_selectedPayments} select={this.handleSelectPaymentOption}/>
           </div>
           <div className={styles.verticalLine}></div>

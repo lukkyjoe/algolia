@@ -2,7 +2,7 @@ import React from 'react';
 
 const Ratings = (props) => {
   const stars = props.stars_count;
-  let list = stars.map((item, index) => <StarCount item={item} key={index} select={props.select}/>)
+  let list = stars.map((item, index) => <StarCount item={item} key={index} select={props.select} rating={props.rating}/>)
   return <div><h3>Rating</h3>{list}</div>
 }
 
@@ -18,11 +18,16 @@ const StarCount = (props) => {
     }
     return starsContainer;
   }
+  let renderArrow = () => {
+    if (props.rating === props.item){
+      return '*';  }
+  }
   return (
-    <div onClick={() => {props.select(props.item)
+    <div style={{display: 'flex'}} 
+    onClick={() => {props.select(props.item)
         console.log('selected', props.item)
         }}>
-      {renderStars()}
+      {renderStars()} {renderArrow()}
     </div>
   )
 }
