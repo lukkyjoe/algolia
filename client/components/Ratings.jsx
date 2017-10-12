@@ -25,7 +25,7 @@ const StarCount = (props) => {
   return (
     <div style={{display: 'flex'}} 
     onClick={() => {props.select(props.item)
-        console.log('selected', props.item)
+        {/* console.log('selected', props.item) */}
         }}>
       {renderStars()} {renderArrow()}
     </div>
