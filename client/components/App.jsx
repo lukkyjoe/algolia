@@ -6,6 +6,7 @@ import PaymentOptions from './PaymentOptions.jsx'
 import styles from './App.css'
 let algolia = require('../search')
 
+
 export default class App extends React.Component {
   constructor(props){
     super(props);
@@ -18,6 +19,7 @@ export default class App extends React.Component {
       UI_selectedPayments: {'AMEX': true, 'Visa': true, 'Discover': true, 'Mastercard': true},
       nbHits: 0,
       processingTimeMS: 0,
+      highlightFoodType: false,
     }
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -25,6 +27,7 @@ export default class App extends React.Component {
     this.handleSelectCuisine = this.handleSelectCuisine.bind(this);
     this.handleSelectPaymentOption = this.handleSelectPaymentOption.bind(this);
     this.handleNextPage = this.handleNextPage.bind(this);
+    this.handleHover = this.handleHover.bind(this);
   }
   
   componentWillMount(){
@@ -33,6 +36,7 @@ export default class App extends React.Component {
 
   search(){
     algolia.helper.on('result', (content) => {
+      console.log('content', content);
       this.setState({
         content: content,
         hits: content.hits,
@@ -60,6 +64,11 @@ export default class App extends React.Component {
   handleSelectCuisine(facetValue){
     algolia.helper.toggleFacetRefinement('food_type', facetValue)
       .search();
+    console.log('foodtype refinements:', algolia.helper.getRefinements('food_type'));
+  }
+
+  handleHover(){
+    console.log('hovering...')
   }
 
   handleSelectRating(rating){
@@ -109,7 +118,7 @@ export default class App extends React.Component {
         </div>
         <div className={styles.layout} style={{display: 'flex'}}>
           <div className={styles.sidebar}>
-            <FoodTypes food_types={this.state.food_types} select={this.handleSelectCuisine}/>
+            <FoodTypes food_types={this.state.food_types} select={this.handleSelectCuisine} hover={this.handleHover}/>
             <Ratings stars_count={this.state.stars_count} select={this.handleSelectRating}/>
             <PaymentOptions options={this.state.UI_selectedPayments} select={this.handleSelectPaymentOption}/>
           </div>
