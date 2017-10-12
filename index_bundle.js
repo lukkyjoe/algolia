@@ -31080,7 +31080,8 @@ var App = function (_React$Component) {
       UI_selectedPayments: { 'AMEX': true, 'Visa': true, 'Discover': true, 'Mastercard': true },
       nbHits: 0,
       processingTimeMS: 0,
-      highlightFood: false
+      highlightFood: false,
+      selectedRating: 0
     };
     _this.search = _this.search.bind(_this);
     _this.handleChange = _this.handleChange.bind(_this);
@@ -31088,6 +31089,7 @@ var App = function (_React$Component) {
     _this.handleSelectCuisine = _this.handleSelectCuisine.bind(_this);
     _this.handleSelectPaymentOption = _this.handleSelectPaymentOption.bind(_this);
     _this.handleNextPage = _this.handleNextPage.bind(_this);
+    _this.handleSelectRating = _this.handleSelectRating.bind(_this);
     return _this;
   }
 
@@ -31146,6 +31148,9 @@ var App = function (_React$Component) {
     key: 'handleSelectRating',
     value: function handleSelectRating(rating) {
       algolia.helper.clearRefinements('stars_count').addNumericRefinement('stars_count', '>=', rating).search();
+      // console.log(algolia.helper.getRefinements('stars_count'))      
+      // console.log(algolia.helper.getRefinements('stars_count').length)
+      this.setState({ selectedRating: rating });
     }
   }, {
     key: 'handleSelectPaymentOption',
@@ -31203,7 +31208,7 @@ var App = function (_React$Component) {
             'div',
             { className: _App2.default.sidebar },
             _react2.default.createElement(_FoodTypes2.default, { food_types: this.state.food_types, select: this.handleSelectCuisine, hover: this.handleHover, highlight: this.state.highlightFood }),
-            _react2.default.createElement(_Ratings2.default, { stars_count: this.state.stars_count, select: this.handleSelectRating }),
+            _react2.default.createElement(_Ratings2.default, { stars_count: this.state.stars_count, select: this.handleSelectRating, rating: this.state.selectedRating }),
             _react2.default.createElement(_PaymentOptions2.default, { options: this.state.UI_selectedPayments, select: this.handleSelectPaymentOption })
           ),
           _react2.default.createElement('div', { className: _App2.default.verticalLine }),
@@ -31727,7 +31732,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Ratings = function Ratings(props) {
   var stars = props.stars_count;
   var list = stars.map(function (item, index) {
-    return _react2.default.createElement(StarCount, { item: item, key: index, select: props.select });
+    return _react2.default.createElement(StarCount, { item: item, key: index, select: props.select, rating: props.rating });
   });
   return _react2.default.createElement(
     'div',
@@ -31753,13 +31758,21 @@ var StarCount = function StarCount(props) {
     }
     return starsContainer;
   };
+  var renderArrow = function renderArrow() {
+    if (props.rating === props.item) {
+      return '*';
+    }
+  };
   return _react2.default.createElement(
     'div',
-    { onClick: function onClick() {
+    { style: { display: 'flex' },
+      onClick: function onClick() {
         props.select(props.item);
         console.log('selected', props.item);
       } },
-    renderStars()
+    renderStars(),
+    ' ',
+    renderArrow()
   );
 };
 
